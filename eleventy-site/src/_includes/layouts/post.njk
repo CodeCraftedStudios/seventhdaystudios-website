@@ -446,8 +446,8 @@ extraStyles: |
                 <div class="post-author">
                     <div class="author-avatar">✝️</div>
                     <div class="author-info">
-                        <span class="author-name">{{ author | default: "Seventh Day Studios" }}</span>
-                        <span class="author-role">{{ authorRole | default: "Founder" }}</span>
+                        <span class="author-name">{{ author or "Seventh Day Studios" }}</span>
+                        <span class="author-role">{{ authorRole or "Founder" }}</span>
                     </div>
                 </div>
             </div>
