@@ -5,8 +5,8 @@ backend:
 # Enables editorial workflow for drafts
 publish_mode: editorial_workflow
 
-# Media files storage
-media_folder: "src/images/uploads"
+# Media files storage - paths relative to repo root
+media_folder: "eleventy-site/src/images/uploads"
 public_folder: "/images/uploads"
 
 # Site URL for preview
@@ -38,28 +38,28 @@ collections:
     files:
       - label: "About Page"
         name: "about"
-        file: "src/about.njk"
+        file: "eleventy-site/src/about.njk"
         fields:
           - { label: "Title", name: "title", widget: "hidden", default: "About" }
           - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
           
       - label: "Games Page"  
         name: "games"
-        file: "src/games.njk"
+        file: "eleventy-site/src/games.njk"
         fields:
           - { label: "Title", name: "title", widget: "hidden", default: "Games" }
           - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
 
       - label: "Community Page"
         name: "community"
-        file: "src/community.njk"
+        file: "eleventy-site/src/community.njk"
         fields:
           - { label: "Title", name: "title", widget: "hidden", default: "Community" }
           - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
 
       - label: "Contact Page"
         name: "contact"
-        file: "src/contact.njk"
+        file: "eleventy-site/src/contact.njk"
         fields:
           - { label: "Title", name: "title", widget: "hidden", default: "Contact" }
           - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
