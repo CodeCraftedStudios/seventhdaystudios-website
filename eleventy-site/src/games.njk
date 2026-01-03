@@ -1,0 +1,269 @@
+---
+layout: base.njk
+title: Games
+extraStyles: |
+    .games-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem 5rem;
+    }
+
+    .featured-game {
+        background: linear-gradient(135deg, rgba(45, 27, 78, 0.5), rgba(26, 15, 46, 0.7));
+        border: 1px solid rgba(212, 168, 75, 0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 4rem;
+    }
+
+    .featured-game-header {
+        position: relative;
+        aspect-ratio: 21/9;
+        background: linear-gradient(135deg, var(--royal-purple), var(--mystic-purple));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .featured-game-header::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+            linear-gradient(135deg, rgba(212, 168, 75, 0.1) 0%, transparent 50%),
+            linear-gradient(225deg, rgba(74, 44, 122, 0.5) 0%, transparent 50%);
+    }
+
+    .featured-game-header::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(212, 168, 75, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(212, 168, 75, 0.03) 1px, transparent 1px);
+        background-size: 30px 30px;
+    }
+
+    .featured-badge {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        padding: 0.5rem 1rem;
+        background: linear-gradient(135deg, var(--divine-gold), var(--light-gold));
+        color: var(--deep-purple);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 6px;
+        z-index: 2;
+    }
+
+    .featured-game-icon {
+        font-size: 5rem;
+        z-index: 1;
+    }
+
+    .featured-game-content {
+        padding: 2.5rem;
+    }
+
+    .featured-game-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.25rem;
+        color: var(--pale-gold);
+        margin-bottom: 1rem;
+    }
+
+    .featured-game-description {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .game-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .game-feature {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: rgba(74, 44, 122, 0.3);
+        border-radius: 10px;
+        border: 1px solid rgba(212, 168, 75, 0.1);
+    }
+
+    .game-feature-icon {
+        font-size: 1.5rem;
+    }
+
+    .game-feature-text {
+        font-size: 0.95rem;
+        color: var(--text-light);
+    }
+
+    .game-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        background: rgba(212, 168, 75, 0.1);
+        border: 1px solid rgba(212, 168, 75, 0.3);
+        border-radius: 8px;
+        color: var(--divine-gold);
+        font-weight: 600;
+    }
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--divine-gold);
+        border-radius: 50%;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .games-section-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.75rem;
+        color: var(--pale-gold);
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .coming-soon-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .coming-soon-card {
+        background: linear-gradient(135deg, rgba(45, 27, 78, 0.4), rgba(26, 15, 46, 0.6));
+        border: 1px solid rgba(212, 168, 75, 0.15);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .coming-soon-card:hover {
+        border-color: rgba(212, 168, 75, 0.3);
+        transform: translateY(-4px);
+    }
+
+    .coming-soon-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .coming-soon-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.25rem;
+        color: var(--pale-gold);
+        margin-bottom: 0.75rem;
+    }
+
+    .coming-soon-text {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+        .featured-game-content {
+            padding: 1.5rem;
+        }
+
+        .featured-game-title {
+            font-size: 1.75rem;
+        }
+
+        .game-features {
+            grid-template-columns: 1fr;
+        }
+    }
+---
+
+<div class="page-header">
+    <h1>Our Games</h1>
+    <p>Faith-driven adventures built with purpose and passion.</p>
+</div>
+
+<main class="games-container">
+    <article class="featured-game">
+        <div class="featured-game-header">
+            <span class="featured-badge">Featured Project</span>
+            <span class="featured-game-icon">📖</span>
+        </div>
+        <div class="featured-game-content">
+            <h2 class="featured-game-title">The Scripture Journey</h2>
+            <p class="featured-game-description">
+                An epic RPG adventure through the entire Bible, from Genesis to Revelation. 
+                Experience the greatest story ever told like never before—walk in the footsteps of biblical heroes, 
+                witness miraculous events, and engage in spiritual warfare as you journey through Scripture.
+            </p>
+            
+            <div class="game-features">
+                <div class="game-feature">
+                    <span class="game-feature-icon">📚</span>
+                    <span class="game-feature-text">Complete Biblical Narrative</span>
+                </div>
+                <div class="game-feature">
+                    <span class="game-feature-icon">🌍</span>
+                    <span class="game-feature-text">Immersive Environments</span>
+                </div>
+                <div class="game-feature">
+                    <span class="game-feature-icon">⚔️</span>
+                    <span class="game-feature-text">Spiritual Warfare</span>
+                </div>
+                <div class="game-feature">
+                    <span class="game-feature-icon">📈</span>
+                    <span class="game-feature-text">Character Progression</span>
+                </div>
+                <div class="game-feature">
+                    <span class="game-feature-icon">🎭</span>
+                    <span class="game-feature-text">Meaningful Choices</span>
+                </div>
+                <div class="game-feature">
+                    <span class="game-feature-icon">🎮</span>
+                    <span class="game-feature-text">Roblox Platform</span>
+                </div>
+            </div>
+
+            <div class="game-status">
+                <span class="status-dot"></span>
+                In Development
+            </div>
+        </div>
+    </article>
+
+    <h2 class="games-section-title">More Coming Soon</h2>
+    
+    <div class="coming-soon-grid">
+        <div class="coming-soon-card">
+            <span class="coming-soon-icon">🎮</span>
+            <h3 class="coming-soon-title">Future Projects</h3>
+            <p class="coming-soon-text">
+                We have exciting new games in the planning stages. Join our community to be the first to know when we announce new projects.
+            </p>
+        </div>
+        <div class="coming-soon-card">
+            <span class="coming-soon-icon">💡</span>
+            <h3 class="coming-soon-title">Have an Idea?</h3>
+            <p class="coming-soon-text">
+                We love hearing from our community. If you have a game concept that aligns with our mission, we'd love to hear about it.
+            </p>
+        </div>
+    </div>
+</main>

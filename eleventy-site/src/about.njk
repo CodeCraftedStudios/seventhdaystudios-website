@@ -1,0 +1,307 @@
+---
+layout: base.njk
+title: About
+extraStyles: |
+    .about-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem 5rem;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+        align-items: center;
+        margin-bottom: 4rem;
+    }
+
+    .about-grid.reverse {
+        grid-template-columns: 1fr 280px;
+    }
+
+    .about-grid.reverse .about-image-container {
+        order: 2;
+    }
+
+    .about-image {
+        position: relative;
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, var(--royal-purple), var(--mystic-purple));
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(212, 168, 75, 0.2);
+        overflow: hidden;
+    }
+
+    .about-image::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(212, 168, 75, 0.1) 0%, transparent 50%);
+    }
+
+    .about-image-inner {
+        text-align: center;
+        z-index: 1;
+    }
+
+    .about-icon-main {
+        font-size: 4rem;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .about-image-label {
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        color: var(--divine-gold);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .about-content h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.75rem;
+        color: var(--pale-gold);
+        margin-bottom: 1.25rem;
+    }
+
+    .about-content p {
+        font-size: 1.05rem;
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    .values-section {
+        padding: 4rem 0;
+        border-top: 1px solid rgba(212, 168, 75, 0.1);
+        margin-top: 2rem;
+    }
+
+    .values-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .values-header h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 2rem;
+        color: var(--pale-gold);
+        margin-bottom: 0.5rem;
+    }
+
+    .values-header p {
+        color: var(--text-muted);
+    }
+
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .value-card {
+        background: linear-gradient(135deg, rgba(45, 27, 78, 0.4), rgba(26, 15, 46, 0.6));
+        border: 1px solid rgba(212, 168, 75, 0.15);
+        border-radius: 12px;
+        padding: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .value-card:hover {
+        border-color: rgba(212, 168, 75, 0.3);
+        transform: translateY(-4px);
+    }
+
+    .value-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+    }
+
+    .value-card h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.1rem;
+        color: var(--divine-gold);
+        margin-bottom: 0.5rem;
+    }
+
+    .value-card p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+
+    .cta-section {
+        padding: 4rem 2rem;
+        text-align: center;
+        background: linear-gradient(180deg, transparent, rgba(74, 44, 122, 0.3));
+        border-radius: 20px;
+        margin-top: 3rem;
+    }
+
+    .cta-section h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 2rem;
+        color: var(--pale-gold);
+        margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+        .about-grid,
+        .about-grid.reverse {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .about-grid.reverse .about-image-container {
+            order: 0;
+        }
+
+        .about-image {
+            max-width: 250px;
+            margin: 0 auto;
+        }
+    }
+---
+
+<div class="page-header">
+    <h1>About Seventh Day Studios</h1>
+    <p>Building games that inspire, entertain, and uplift through faith-driven creativity and purpose.</p>
+</div>
+
+<main class="about-container">
+    <div class="about-grid">
+        <div class="about-image-container">
+            <div class="about-image">
+                <div class="about-image-inner">
+                    <span class="about-icon-main">🎮</span>
+                    <span class="about-image-label">The Vision</span>
+                </div>
+            </div>
+        </div>
+        <div class="about-content">
+            <h2>The Vision</h2>
+            <p>
+                Seventh Day Studios was born from a simple belief: gaming can be more than entertainment. 
+                It can inspire, challenge, and bring people together around shared values and meaningful experiences.
+            </p>
+            <p>
+                We're an independent game development studio focused on creating Christian games, 
+                roleplay adventures, and immersive experiences that leave a lasting, positive impact on players.
+            </p>
+        </div>
+    </div>
+
+    <div class="about-grid reverse">
+        <div class="about-image-container">
+            <div class="about-image">
+                <div class="about-image-inner">
+                    <span class="about-icon-main">✝️</span>
+                    <span class="about-image-label">Faith & Gaming</span>
+                </div>
+            </div>
+        </div>
+        <div class="about-content">
+            <h2>Faith & Gaming</h2>
+            <p>
+                We believe that faith and gaming aren't just compatible—they're a powerful combination. 
+                Through interactive storytelling and engaging gameplay, we weave spiritual themes naturally 
+                into adventures that resonate with players of all backgrounds.
+            </p>
+            <p>
+                Our games don't preach—they invite players into stories where values like hope, 
+                redemption, courage, and community come alive through the choices they make.
+            </p>
+        </div>
+    </div>
+
+    <div class="about-grid">
+        <div class="about-image-container">
+            <div class="about-image">
+                <div class="about-image-inner">
+                    <span class="about-icon-main">🚀</span>
+                    <span class="about-image-label">The Mission</span>
+                </div>
+            </div>
+        </div>
+        <div class="about-content">
+            <h2>The Mission</h2>
+            <p>
+                Our mission is to create games that matter. Games that players remember not just for 
+                their mechanics, but for the stories they tell and the emotions they evoke.
+            </p>
+            <p>
+                We're building a community of gamers and creators who believe in the power of 
+                meaningful entertainment—games that you can feel good about playing and sharing.
+            </p>
+        </div>
+    </div>
+
+    <section class="values-section">
+        <div class="values-header">
+            <h2>Our Core Values</h2>
+            <p>The principles that guide everything we create</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <span class="value-icon">💡</span>
+                <div>
+                    <h3>Purpose-Driven</h3>
+                    <p>Every game we create has meaning. We design with intention, ensuring our work serves a greater purpose beyond entertainment.</p>
+                </div>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🎨</span>
+                <div>
+                    <h3>Creative Excellence</h3>
+                    <p>We push creative boundaries to deliver polished, innovative experiences that stand out in the gaming landscape.</p>
+                </div>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🤝</span>
+                <div>
+                    <h3>Community First</h3>
+                    <p>Our players are partners in this journey. We listen, learn, and grow together as a community united by shared values.</p>
+                </div>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">✝️</span>
+                <div>
+                    <h3>Faith Foundation</h3>
+                    <p>Our faith isn't just part of what we do—it's the foundation of who we are and why we create.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Join the Journey</h2>
+        <p>Be part of a community that believes in the power of meaningful gaming. Follow our development, share your feedback, and help shape the future of faith-driven games.</p>
+        <div class="cta-buttons">
+            <a href="/community/" class="btn btn-primary">Join Community</a>
+            <a href="/contact/" class="btn btn-secondary">Get in Touch</a>
+        </div>
+    </section>
+</main>

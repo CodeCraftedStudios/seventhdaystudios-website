@@ -1,0 +1,239 @@
+---
+layout: base.njk
+title: Community
+extraStyles: |
+    .community-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem 5rem;
+    }
+
+    .discord-section {
+        background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(45, 27, 78, 0.6));
+        border: 1px solid rgba(88, 101, 242, 0.3);
+        border-radius: 20px;
+        padding: 3rem;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .discord-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .discord-section h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 2rem;
+        color: var(--pale-gold);
+        margin-bottom: 1rem;
+    }
+
+    .discord-section p {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .discord-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 2rem;
+        background: #5865F2;
+        color: white;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .discord-btn:hover {
+        background: #4752c4;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(88, 101, 242, 0.4);
+    }
+
+    .community-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .community-feature {
+        background: linear-gradient(135deg, rgba(45, 27, 78, 0.4), rgba(26, 15, 46, 0.6));
+        border: 1px solid rgba(212, 168, 75, 0.15);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .community-feature:hover {
+        border-color: rgba(212, 168, 75, 0.3);
+        transform: translateY(-4px);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .community-feature h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.25rem;
+        color: var(--pale-gold);
+        margin-bottom: 0.75rem;
+    }
+
+    .community-feature p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+
+    .social-section {
+        text-align: center;
+        padding: 3rem 0;
+        border-top: 1px solid rgba(212, 168, 75, 0.1);
+    }
+
+    .social-section h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.75rem;
+        color: var(--pale-gold);
+        margin-bottom: 1rem;
+    }
+
+    .social-section p {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: rgba(74, 44, 122, 0.4);
+        border: 1px solid rgba(212, 168, 75, 0.15);
+        border-radius: 10px;
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        background: rgba(212, 168, 75, 0.1);
+        border-color: rgba(212, 168, 75, 0.3);
+        color: var(--divine-gold);
+    }
+
+    .social-link-icon {
+        font-size: 1.25rem;
+    }
+
+    @media (max-width: 600px) {
+        .discord-section {
+            padding: 2rem 1.5rem;
+        }
+
+        .discord-section h2 {
+            font-size: 1.5rem;
+        }
+    }
+---
+
+<div class="page-header">
+    <h1>Community</h1>
+    <p>Join fellow believers and gamers on this journey together.</p>
+</div>
+
+<main class="community-container">
+    <section class="discord-section">
+        <div class="discord-icon">💬</div>
+        <h2>Join Our Discord</h2>
+        <p>
+            Connect with fellow community members, get exclusive development updates, 
+            participate in discussions, and be the first to playtest new features. 
+            Our Discord is the heart of the Seventh Day Studios community.
+        </p>
+        <a href="https://discord.gg/seventhdaystudios" class="discord-btn" target="_blank" rel="noopener">
+            <span>Join Discord Server</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
+    </section>
+
+    <div class="community-features">
+        <div class="community-feature">
+            <span class="feature-icon">🎮</span>
+            <h3>Development Updates</h3>
+            <p>Get behind-the-scenes looks at our games in development, including screenshots, videos, and progress reports.</p>
+        </div>
+        <div class="community-feature">
+            <span class="feature-icon">💬</span>
+            <h3>Discussion Channels</h3>
+            <p>Share your thoughts on faith, gaming, and everything in between with like-minded community members.</p>
+        </div>
+        <div class="community-feature">
+            <span class="feature-icon">🧪</span>
+            <h3>Beta Testing</h3>
+            <p>Be among the first to play new content and help shape the future of our games with your feedback.</p>
+        </div>
+        <div class="community-feature">
+            <span class="feature-icon">🙏</span>
+            <h3>Prayer & Support</h3>
+            <p>A welcoming space to share prayer requests and encourage one another in faith.</p>
+        </div>
+        <div class="community-feature">
+            <span class="feature-icon">🎨</span>
+            <h3>Fan Creations</h3>
+            <p>Share your own artwork, ideas, and creations inspired by our games and mission.</p>
+        </div>
+        <div class="community-feature">
+            <span class="feature-icon">📢</span>
+            <h3>Announcements</h3>
+            <p>Stay up to date with the latest news, releases, and important updates from the studio.</p>
+        </div>
+    </div>
+
+    <section class="social-section">
+        <h2>Follow Us</h2>
+        <p>Stay connected across all our platforms</p>
+        <div class="social-links">
+            <a href="https://instagram.com/seventhdaystudios" class="social-link" target="_blank" rel="noopener">
+                <span class="social-link-icon">📸</span>
+                <span>Instagram</span>
+            </a>
+            <a href="https://threads.net/@seventhdaystudios" class="social-link" target="_blank" rel="noopener">
+                <span class="social-link-icon">🧵</span>
+                <span>Threads</span>
+            </a>
+            <a href="https://discord.gg/seventhdaystudios" class="social-link" target="_blank" rel="noopener">
+                <span class="social-link-icon">💬</span>
+                <span>Discord</span>
+            </a>
+        </div>
+    </section>
+</main>

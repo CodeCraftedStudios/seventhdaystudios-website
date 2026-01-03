@@ -1,0 +1,65 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Enables editorial workflow for drafts
+publish_mode: editorial_workflow
+
+# Media files storage
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+# Site URL for preview
+site_url: https://seventhdaystudios.com
+display_url: https://seventhdaystudios.com
+
+collections:
+  # Blog Posts
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "blog/{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text", required: false, hint: "Short description shown on blog listing page" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["Development", "Announcement", "Behind the Scenes", "Faith & Gaming", "Community"], required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Author", name: "author", widget: "string", default: "Seventh Day Studios", required: false }
+      - { label: "Author Role", name: "authorRole", widget: "string", default: "Founder", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Pages (for editing existing pages)
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "src/about.njk"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "About" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
+          
+      - label: "Games Page"  
+        name: "games"
+        file: "src/games.njk"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "Games" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
+
+      - label: "Community Page"
+        name: "community"
+        file: "src/community.njk"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "Community" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
+
+      - label: "Contact Page"
+        name: "contact"
+        file: "src/contact.njk"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "Contact" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
