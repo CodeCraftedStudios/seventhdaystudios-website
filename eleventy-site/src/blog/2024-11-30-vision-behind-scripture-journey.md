@@ -1,8 +1,10 @@
 ---
-title: "The Vision Behind The Scripture Journey"
+title: The Vision Behind The Scripture Journey
 date: 2024-11-30
-description: "Why I'm building an RPG that covers the entire Bible, and what drives this ambitious project."
-category: "Development"
+description: Why I'm building an RPG that covers the entire Bible, and what
+  drives this ambitious project.
+thumbnail: /images/uploads/apple-touch-icon.png
+category: Development
 tags:
   - Development
   - The Scripture Journey
