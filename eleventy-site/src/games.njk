@@ -19,7 +19,9 @@ extraStyles: |
     .featured-game-header {
         position: relative;
         aspect-ratio: 21/9;
-        background: linear-gradient(135deg, var(--royal-purple), var(--mystic-purple));
+        background-image: url('/images/pilgrims-progress-banner.png');
+        background-size: cover;
+        background-position: center;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -30,19 +32,7 @@ extraStyles: |
         content: '';
         position: absolute;
         inset: 0;
-        background: 
-            linear-gradient(135deg, rgba(212, 168, 75, 0.1) 0%, transparent 50%),
-            linear-gradient(225deg, rgba(74, 44, 122, 0.5) 0%, transparent 50%);
-    }
-
-    .featured-game-header::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: 
-            linear-gradient(rgba(212, 168, 75, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(212, 168, 75, 0.03) 1px, transparent 1px);
-        background-size: 30px 30px;
+        background: linear-gradient(to bottom, rgba(26, 15, 46, 0) 0%, rgba(26, 15, 46, 0.3) 70%, rgba(26, 15, 46, 0.8) 100%);
     }
 
     .featured-badge {
@@ -58,11 +48,6 @@ extraStyles: |
         letter-spacing: 1px;
         border-radius: 6px;
         z-index: 2;
-    }
-
-    .featured-game-icon {
-        font-size: 5rem;
-        z-index: 1;
     }
 
     .featured-game-content {
@@ -204,40 +189,39 @@ extraStyles: |
     <article class="featured-game">
         <div class="featured-game-header">
             <span class="featured-badge">Featured Project</span>
-            <span class="featured-game-icon">📖</span>
         </div>
         <div class="featured-game-content">
-            <h2 class="featured-game-title">The Scripture Journey</h2>
+            <h2 class="featured-game-title">The Pilgrim's Progress</h2>
             <p class="featured-game-description">
-                An epic RPG adventure through the entire Bible, from Genesis to Revelation. 
-                Experience the greatest story ever told like never before—walk in the footsteps of biblical heroes, 
-                witness miraculous events, and engage in spiritual warfare as you journey through Scripture.
+                An action-adventure adaptation of John Bunyan's timeless allegory. 
+                Journey as Christian, a man burdened by the weight of his sin, fleeing the City of Destruction toward the Celestial City. 
+                Battle demonic forces in visceral combat, traverse treacherous landscapes, and experience one of literature's greatest stories brought to life.
             </p>
             
             <div class="game-features">
                 <div class="game-feature">
-                    <span class="game-feature-icon">📚</span>
-                    <span class="game-feature-text">Complete Biblical Narrative</span>
+                    <span class="game-feature-icon">⚔️</span>
+                    <span class="game-feature-text">Action-Adventure Combat</span>
+                </div>
+                <div class="game-feature">
+                    <span class="game-feature-icon">🛡️</span>
+                    <span class="game-feature-text">Armor of God Mechanics</span>
                 </div>
                 <div class="game-feature">
                     <span class="game-feature-icon">🌍</span>
-                    <span class="game-feature-text">Immersive Environments</span>
+                    <span class="game-feature-text">Immersive Exploration</span>
                 </div>
                 <div class="game-feature">
-                    <span class="game-feature-icon">⚔️</span>
-                    <span class="game-feature-text">Spiritual Warfare</span>
-                </div>
-                <div class="game-feature">
-                    <span class="game-feature-icon">📈</span>
-                    <span class="game-feature-text">Character Progression</span>
-                </div>
-                <div class="game-feature">
-                    <span class="game-feature-icon">🎭</span>
-                    <span class="game-feature-text">Meaningful Choices</span>
+                    <span class="game-feature-icon">📖</span>
+                    <span class="game-feature-text">Faithful Adaptation</span>
                 </div>
                 <div class="game-feature">
                     <span class="game-feature-icon">🎮</span>
-                    <span class="game-feature-text">Roblox Platform</span>
+                    <span class="game-feature-text">20+ Hour Journey</span>
+                </div>
+                <div class="game-feature">
+                    <span class="game-feature-icon">🖥️</span>
+                    <span class="game-feature-text">PC / Unity Engine</span>
                 </div>
             </div>
 
@@ -267,3 +251,4 @@ extraStyles: |
         </div>
     </div>
 </main>
+
