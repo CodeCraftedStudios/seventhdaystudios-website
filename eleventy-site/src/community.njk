@@ -101,6 +101,141 @@ extraStyles: |
         line-height: 1.6;
     }
 
+    .partnerships-section {
+        padding: 3rem 0;
+        border-top: 1px solid rgba(212, 168, 75, 0.1);
+        margin-bottom: 3rem;
+    }
+
+    .partnerships-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .partnerships-header h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.75rem;
+        color: var(--pale-gold);
+        margin-bottom: 0.75rem;
+    }
+
+    .partnerships-header p {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+    }
+
+    .partner-card {
+        background: linear-gradient(135deg, rgba(45, 27, 78, 0.4), rgba(26, 15, 46, 0.6));
+        border: 1px solid rgba(212, 168, 75, 0.15);
+        border-radius: 16px;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .partner-card:hover {
+        border-color: rgba(212, 168, 75, 0.3);
+        transform: translateY(-4px);
+    }
+
+    .partner-icon {
+        font-size: 2.5rem;
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, rgba(88, 101, 242, 0.3), rgba(45, 27, 78, 0.6));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba(212, 168, 75, 0.2);
+    }
+
+    .partner-info h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.25rem;
+        color: var(--divine-gold);
+        margin-bottom: 0.5rem;
+    }
+
+    .partner-info p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .partner-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background: rgba(88, 101, 242, 0.3);
+        border: 1px solid rgba(88, 101, 242, 0.4);
+        border-radius: 8px;
+        color: white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .partner-link:hover {
+        background: rgba(88, 101, 242, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .partner-cta {
+        background: linear-gradient(135deg, rgba(45, 27, 78, 0.4), rgba(26, 15, 46, 0.6));
+        border: 1px solid rgba(212, 168, 75, 0.2);
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .partner-cta h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: var(--pale-gold);
+        margin-bottom: 0.75rem;
+    }
+
+    .partner-cta p {
+        font-size: 1rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-btn-gold {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #D4AF37, #F5E6B8);
+        color: #1a0f2e;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .cta-btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    }
+
     .social-section {
         text-align: center;
         padding: 3rem 0;
@@ -148,6 +283,13 @@ extraStyles: |
 
     .social-link-icon {
         font-size: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+        .partner-card {
+            flex-direction: column;
+            text-align: center;
+        }
     }
 
     @media (max-width: 600px) {
@@ -218,19 +360,56 @@ extraStyles: |
         </div>
     </div>
 
+    <section class="partnerships-section">
+        <div class="partnerships-header">
+            <h2>✦ Our Partners</h2>
+            <p>Communities and organizations we're proud to stand alongside.</p>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-icon">⚓</div>
+            <div class="partner-info">
+                <h3>Anchored in Christ</h3>
+                <p>
+                    A vibrant Christian community where believers from all walks of life come together 
+                    to grow in faith, encourage one another, and stay rooted in the truth of God's Word. 
+                    Whether you're a lifelong follower of Jesus or just beginning your spiritual journey, 
+                    this is a place to connect, learn, and be uplifted.
+                </p>
+                <a href="https://discord.gg/6vbzXsGUXP" class="partner-link" target="_blank" rel="noopener">
+                    💬 Join Their Discord
+                </a>
+            </div>
+        </div>
+
+        <div class="partner-cta">
+            <h3>Want to Partner With Us?</h3>
+            <p>
+                We're always looking to connect with like-minded communities, creators, and organizations 
+                that share our values. If you're interested in a partnership or cross-promotion, 
+                we'd love to hear from you.
+            </p>
+            <a href="/contact/" class="cta-btn-gold">Get In Touch</a>
+        </div>
+    </section>
+
     <section class="social-section">
         <h2>Follow Us</h2>
         <p>Stay connected across all our platforms</p>
         <div class="social-links">
-            <a href="https://instagram.com/seventhdaystudios" class="social-link" target="_blank" rel="noopener">
+            <a href="https://www.instagram.com/seventhdaystudios/" class="social-link" target="_blank" rel="noopener">
                 <span class="social-link-icon">📸</span>
                 <span>Instagram</span>
             </a>
-            <a href="https://threads.net/@seventhdaystudios" class="social-link" target="_blank" rel="noopener">
+            <a href="https://www.threads.com/@seventhdaystudios" class="social-link" target="_blank" rel="noopener">
                 <span class="social-link-icon">🧵</span>
                 <span>Threads</span>
             </a>
-            <a href="https://discord.gg/seventhdaystudios" class="social-link" target="_blank" rel="noopener">
+            <a href="https://www.facebook.com/profile.php?id=61587712425619" class="social-link" target="_blank" rel="noopener">
+                <span class="social-link-icon">📘</span>
+                <span>Facebook</span>
+            </a>
+            <a href="https://discord.gg/CmZwk5nBcS" class="social-link" target="_blank" rel="noopener">
                 <span class="social-link-icon">💬</span>
                 <span>Discord</span>
             </a>
