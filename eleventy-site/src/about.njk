@@ -8,6 +8,52 @@ extraStyles: |
         padding: 0 2rem 5rem;
     }
 
+    .founder-section {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding-bottom: 4rem;
+        border-bottom: 1px solid rgba(212, 168, 75, 0.1);
+    }
+
+    .founder-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: 85% 20%;
+        border: 3px solid rgba(212, 168, 75, 0.4);
+        box-shadow: 0 0 30px rgba(107, 63, 160, 0.4), 0 0 60px rgba(212, 168, 75, 0.1);
+        margin-bottom: 1.5rem;
+    }
+
+    .founder-name {
+        font-family: 'Cinzel', serif;
+        font-size: 1.75rem;
+        color: var(--pale-gold);
+        margin-bottom: 0.25rem;
+    }
+
+    .founder-title {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 1rem;
+        color: var(--divine-gold);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+    }
+
+    .founder-bio {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .founder-bio p {
+        font-size: 1.05rem;
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
     .about-grid {
         display: grid;
         grid-template-columns: 280px 1fr;
@@ -183,6 +229,11 @@ extraStyles: |
             max-width: 250px;
             margin: 0 auto;
         }
+
+        .founder-photo {
+            width: 160px;
+            height: 160px;
+        }
     }
 ---
 
@@ -192,6 +243,30 @@ extraStyles: |
 </div>
 
 <main class="about-container">
+    <section class="founder-section">
+        <img src="/images/uploads/founder.jpg" alt="Elijah - Founder of Seventh Day Studios" class="founder-photo">
+        <h2 class="founder-name">Elijah</h2>
+        <p class="founder-title">Founder &amp; Developer</p>
+        <div class="founder-bio">
+            <p>
+                I'm Elijah, a 17-year-old self-taught developer from Colorado and the founder of 
+                Seventh Day Studios. I started this studio because I saw a gap in the gaming world — 
+                there weren't enough high-quality games that reflected the faith and values I grew up 
+                with. So instead of waiting for someone else to make them, I decided to build them myself.
+            </p>
+            <p>
+                My faith drives everything I do. It's the reason this studio exists and the foundation 
+                behind every game we create. I'm currently balancing finishing high school and working 
+                full time while pouring everything I've got into building something meaningful — games 
+                that glorify God and prove that faith and quality belong in the same sentence.
+            </p>
+            <p>
+                This isn't just a hobby or a side project. This is the dream, and I'm building it 
+                one line of code at a time.
+            </p>
+        </div>
+    </section>
+
     <div class="about-grid">
         <div class="about-image-container">
             <div class="about-image">
