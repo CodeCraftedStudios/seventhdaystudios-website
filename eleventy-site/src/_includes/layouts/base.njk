@@ -162,6 +162,7 @@
             display: flex;
             gap: 0.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -203,6 +204,36 @@
 
         .nav-links a.active::after {
             width: 80%;
+        }
+
+        /* Highlighted Roadmap Nav Button */
+        .nav-roadmap-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.15rem;
+            background: linear-gradient(135deg, var(--divine-gold), var(--light-gold));
+            color: var(--deep-purple);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-left: 0.25rem;
+            box-shadow: 0 2px 12px rgba(212, 168, 75, 0.25);
+        }
+
+        .nav-roadmap-btn::after {
+            display: none;
+        }
+
+        .nav-roadmap-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(212, 168, 75, 0.45);
+            color: var(--deep-purple);
         }
 
         /* Mobile Menu Button */
@@ -296,6 +327,7 @@
         .mobile-nav.active .mobile-nav-links li:nth-child(4) { transition-delay: 0.25s; }
         .mobile-nav.active .mobile-nav-links li:nth-child(5) { transition-delay: 0.3s; }
         .mobile-nav.active .mobile-nav-links li:nth-child(6) { transition-delay: 0.35s; }
+        .mobile-nav.active .mobile-nav-links li:nth-child(7) { transition-delay: 0.4s; }
 
         .mobile-nav-links a {
             display: inline-block;
@@ -314,6 +346,31 @@
         .mobile-nav-links a.active {
             color: var(--divine-gold);
             text-shadow: 0 0 30px rgba(212, 168, 75, 0.5);
+        }
+
+        .mobile-roadmap-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--divine-gold), var(--light-gold));
+            color: var(--deep-purple);
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(212, 168, 75, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-roadmap-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 168, 75, 0.5);
+            color: var(--deep-purple);
+            text-shadow: none;
         }
 
         .mobile-nav-decoration {
@@ -521,6 +578,7 @@
                 <li><a href="/blog/" {% if "/blog" in page.url %}class="active"{% endif %}>Blog</a></li>
                 <li><a href="/community/" {% if "/community" in page.url %}class="active"{% endif %}>Community</a></li>
                 <li><a href="/contact/" {% if "/contact" in page.url %}class="active"{% endif %}>Contact</a></li>
+                <li><a href="/roadmap/" class="nav-roadmap-btn" {% if "/roadmap" in page.url %}style="opacity:0.85;"{% endif %}>Roadmap</a></li>
             </ul>
 
             <!-- Mobile Menu Button -->
@@ -542,6 +600,7 @@
                 <li><a href="/blog/" {% if "/blog" in page.url %}class="active"{% endif %}>Blog</a></li>
                 <li><a href="/community/" {% if "/community" in page.url %}class="active"{% endif %}>Community</a></li>
                 <li><a href="/contact/" {% if "/contact" in page.url %}class="active"{% endif %}>Contact</a></li>
+                <li><a href="/roadmap/" class="mobile-roadmap-btn">Roadmap</a></li>
             </ul>
             <div class="mobile-nav-decoration">
                 <span></span>
