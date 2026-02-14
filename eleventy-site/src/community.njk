@@ -168,6 +168,12 @@ extraStyles: |
         margin-bottom: 1rem;
     }
 
+    .partner-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
     .partner-link {
         display: inline-flex;
         align-items: center;
@@ -205,6 +211,46 @@ extraStyles: |
 
     .partner-link-etsy:hover {
         background: rgba(234, 118, 36, 0.45);
+        transform: translateY(-2px);
+    }
+
+    .partner-link-website {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background: rgba(212, 168, 75, 0.2);
+        border: 1px solid rgba(212, 168, 75, 0.35);
+        border-radius: 8px;
+        color: white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .partner-link-website:hover {
+        background: rgba(212, 168, 75, 0.35);
+        transform: translateY(-2px);
+    }
+
+    .partner-link-tiktok {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background: rgba(254, 44, 85, 0.2);
+        border: 1px solid rgba(254, 44, 85, 0.4);
+        border-radius: 8px;
+        color: white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .partner-link-tiktok:hover {
+        background: rgba(254, 44, 85, 0.4);
         transform: translateY(-2px);
     }
 
@@ -310,6 +356,10 @@ extraStyles: |
             flex-direction: column;
             text-align: center;
         }
+
+        .partner-links {
+            justify-content: center;
+        }
     }
 
     @media (max-width: 600px) {
@@ -396,9 +446,11 @@ extraStyles: |
                     Whether you're a lifelong follower of Jesus or just beginning your spiritual journey, 
                     this is a place to connect, learn, and be uplifted.
                 </p>
-                <a href="https://discord.gg/6vbzXsGUXP" class="partner-link" target="_blank" rel="noopener">
-                    💬 Join Their Discord
-                </a>
+                <div class="partner-links">
+                    <a href="https://discord.gg/6vbzXsGUXP" class="partner-link" target="_blank" rel="noopener">
+                        💬 Join Their Discord
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -412,9 +464,11 @@ extraStyles: |
                     with believers, share insights, and live out your faith with intention, 
                     you're welcome here.
                 </p>
-                <a href="https://discord.gg/wm6HKY9uAQ" class="partner-link" target="_blank" rel="noopener">
-                    💬 Join Their Discord
-                </a>
+                <div class="partner-links">
+                    <a href="https://discord.gg/wm6HKY9uAQ" class="partner-link" target="_blank" rel="noopener">
+                        💬 Join Their Discord
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -427,9 +481,35 @@ extraStyles: |
                     Scripture-inspired tees, hand-illustrated angel wing hoodies, anime-inspired streetwear, 
                     and lifestyle pieces. Whether it's faith, art, or culture — there's something for everyone.
                 </p>
-                <a href="https://www.etsy.com/shop/EternalFaithStudios" class="partner-link-etsy" target="_blank" rel="noopener">
-                    🛍️ Visit Their Etsy Shop
-                </a>
+                <div class="partner-links">
+                    <a href="https://www.etsy.com/shop/EternalFaithStudios" class="partner-link-etsy" target="_blank" rel="noopener">
+                        🛍️ Visit Their Etsy Shop
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="partner-card">
+            <div class="partner-icon">✝️</div>
+            <div class="partner-info">
+                <h3>Prayer Team 6</h3>
+                <p>
+                    A warm and welcoming community built around fellowship, prayer, and walking through 
+                    life together. Featuring weekly Bible studies, daily devotionals, faith discussions, 
+                    and a positive environment where everyone is valued — whether you're a lifelong 
+                    believer or just exploring, you'll find a home here.
+                </p>
+                <div class="partner-links">
+                    <a href="https://discord.gg/MRSTHRgcxZ" class="partner-link" target="_blank" rel="noopener">
+                        💬 Join Their Discord
+                    </a>
+                    <a href="https://prayerteam6.org" class="partner-link-website" target="_blank" rel="noopener">
+                        🌐 Website
+                    </a>
+                    <a href="https://www.tiktok.com/@prayerteam6" class="partner-link-tiktok" target="_blank" rel="noopener">
+                        🎵 TikTok
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -467,3 +547,4 @@ extraStyles: |
         </div>
     </section>
 </main>
+
