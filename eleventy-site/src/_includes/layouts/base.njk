@@ -165,6 +165,11 @@
             align-items: center;
         }
 
+        .nav-links li {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             display: block;
             padding: 0.75rem 1.25rem;
@@ -210,10 +215,9 @@
         .nav-roadmap-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
             padding: 0.55rem 1.15rem;
             background: linear-gradient(135deg, var(--divine-gold), var(--light-gold));
-            color: #0d0715;
+            color: #000000;
             font-family: 'Rajdhani', sans-serif;
             font-size: 0.95rem;
             font-weight: 700;
@@ -227,13 +231,13 @@
         }
 
         .nav-roadmap-btn::after {
-            display: none;
+            display: none !important;
         }
 
         .nav-roadmap-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 24px rgba(212, 168, 75, 0.45);
-            color: #0d0715;
+            color: #000000;
         }
 
         /* Mobile Menu Button */
