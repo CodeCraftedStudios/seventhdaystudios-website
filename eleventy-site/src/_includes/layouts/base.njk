@@ -211,13 +211,13 @@
             width: 80%;
         }
 
-        /* Highlighted Roadmap Nav Button */
+        /* Roadmap Button — Gold outline style */
         .nav-roadmap-btn {
             display: inline-flex;
             align-items: center;
-            padding: 0.55rem 1.15rem;
-            background: linear-gradient(135deg, var(--divine-gold), var(--light-gold));
-            color: #000000;
+            padding: 0.5rem 1.25rem;
+            background: transparent;
+            color: var(--divine-gold) !important;
             font-family: 'Rajdhani', sans-serif;
             font-size: 0.95rem;
             font-weight: 700;
@@ -225,9 +225,9 @@
             letter-spacing: 0.08em;
             text-decoration: none;
             border-radius: 8px;
+            border: 2px solid var(--divine-gold);
             transition: all 0.3s ease;
-            margin-left: 0.25rem;
-            box-shadow: 0 2px 12px rgba(212, 168, 75, 0.25);
+            margin-left: 0.5rem;
         }
 
         .nav-roadmap-btn::after {
@@ -235,9 +235,10 @@
         }
 
         .nav-roadmap-btn:hover {
+            background: var(--divine-gold);
+            color: #000000 !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(212, 168, 75, 0.45);
-            color: #000000;
+            box-shadow: 0 6px 24px rgba(212, 168, 75, 0.4);
         }
 
         /* Mobile Menu Button */
@@ -352,13 +353,13 @@
             text-shadow: 0 0 30px rgba(212, 168, 75, 0.5);
         }
 
+        /* Mobile Roadmap Button */
         .mobile-roadmap-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 2rem;
-            background: linear-gradient(135deg, var(--divine-gold), var(--light-gold));
-            color: var(--deep-purple);
+            padding: 0.75rem 2.5rem;
+            background: transparent;
+            color: var(--divine-gold) !important;
             font-family: 'Cinzel', serif;
             font-size: 1.25rem;
             font-weight: 700;
@@ -366,14 +367,15 @@
             letter-spacing: 0.1em;
             text-decoration: none;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(212, 168, 75, 0.3);
+            border: 2px solid var(--divine-gold);
             transition: all 0.3s ease;
         }
 
         .mobile-roadmap-btn:hover {
+            background: var(--divine-gold);
+            color: #000000 !important;
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(212, 168, 75, 0.5);
-            color: var(--deep-purple);
+            box-shadow: 0 8px 30px rgba(212, 168, 75, 0.4);
             text-shadow: none;
         }
 
@@ -582,7 +584,7 @@
                 <li><a href="/blog/" {% if "/blog" in page.url %}class="active"{% endif %}>Blog</a></li>
                 <li><a href="/community/" {% if "/community" in page.url %}class="active"{% endif %}>Community</a></li>
                 <li><a href="/contact/" {% if "/contact" in page.url %}class="active"{% endif %}>Contact</a></li>
-                <li><a href="/roadmap/" class="nav-roadmap-btn" {% if "/roadmap" in page.url %}style="opacity:0.85;"{% endif %}>Roadmap</a></li>
+                <li><a href="/roadmap/" class="nav-roadmap-btn">Roadmap</a></li>
             </ul>
 
             <!-- Mobile Menu Button -->
