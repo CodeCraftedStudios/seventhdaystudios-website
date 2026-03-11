@@ -11,7 +11,7 @@ extraStyles: |
     /* Role Cards */
     .role-selector {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 1rem;
         margin-bottom: 3rem;
     }
@@ -47,11 +47,12 @@ extraStyles: |
 
     .role-card-label {
         font-family: 'Cinzel', serif;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         color: var(--text-muted);
         text-transform: uppercase;
         letter-spacing: 1px;
         transition: color 0.3s ease;
+        line-height: 1.3;
     }
 
     .role-card.selected .role-card-label {
@@ -83,6 +84,55 @@ extraStyles: |
 
     .form-section-title span {
         font-size: 1.25rem;
+    }
+
+    /* Role Info Box */
+    .role-info-box {
+        background: linear-gradient(135deg, rgba(74, 44, 122, 0.25), rgba(45, 27, 78, 0.35));
+        border: 1px solid rgba(212, 168, 75, 0.15);
+        border-radius: 10px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .role-info-box h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 0.95rem;
+        color: var(--divine-gold);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 0.5rem;
+    }
+
+    .role-info-box p {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
+    .role-requirements {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .role-requirements li {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        padding: 0.3rem 0;
+        padding-left: 1.25rem;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .role-requirements li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        color: var(--divine-gold);
+        font-size: 0.6rem;
+        top: 0.45rem;
     }
 
     .form-group {
@@ -168,14 +218,8 @@ extraStyles: |
     }
 
     @keyframes fadeSlideIn {
-        from {
-            opacity: 0;
-            transform: translateY(12px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 
     /* Role prompt */
@@ -339,29 +383,12 @@ extraStyles: |
     }
 
     @media (max-width: 600px) {
-        .apply-container {
-            padding: 0 1rem 4rem;
-        }
-
-        .form-section {
-            padding: 1.5rem 1.25rem;
-        }
-
-        .role-selector {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .role-card {
-            padding: 1rem 0.5rem;
-        }
-
-        .role-card-icon {
-            font-size: 1.5rem;
-        }
-
-        .role-card-label {
-            font-size: 0.65rem;
-        }
+        .apply-container { padding: 0 1rem 4rem; }
+        .form-section { padding: 1.5rem 1.25rem; }
+        .role-selector { grid-template-columns: repeat(3, 1fr); }
+        .role-card { padding: 1rem 0.5rem; }
+        .role-card-icon { font-size: 1.5rem; }
+        .role-card-label { font-size: 0.6rem; }
     }
 ---
 
@@ -375,19 +402,17 @@ extraStyles: |
     <div class="info-banner">
         <span class="info-banner-icon">✝️</span>
         <p>
-            <strong>A note before you apply:</strong> Seventh Day Studios is a faith-driven studio. 
-            All team members are expected to respect our Christian values and mission. 
+            <strong>A note before you apply:</strong> Seventh Day Studios is a faith-driven studio.
+            All team members are expected to respect our Christian values and mission.
             We currently operate as a volunteer-based indie studio, with the goal of transitioning to paid roles as the studio grows.
         </p>
     </div>
 
     <div id="application-form">
 
-        <!-- Step 1: Role Selection -->
+        <!-- Role Selection -->
         <div class="form-section">
-            <div class="form-section-title">
-                <span>🎯</span> Select Your Role
-            </div>
+            <div class="form-section-title"><span>🎯</span> Select Your Role</div>
             <div class="role-selector">
                 <div class="role-card" data-role="game-developer" onclick="selectRole(this)">
                     <span class="role-card-icon">🎮</span>
@@ -409,10 +434,30 @@ extraStyles: |
                     <span class="role-card-icon">📣</span>
                     <span class="role-card-label">Social Media</span>
                 </div>
+                <div class="role-card" data-role="movie-host" onclick="selectRole(this)">
+                    <span class="role-card-icon">🎬</span>
+                    <span class="role-card-label">Movie Night Host</span>
+                </div>
+                <div class="role-card" data-role="game-night-host" onclick="selectRole(this)">
+                    <span class="role-card-icon">🕹️</span>
+                    <span class="role-card-label">Game Night Host</span>
+                </div>
+                <div class="role-card" data-role="moderator" onclick="selectRole(this)">
+                    <span class="role-card-icon">🛡️</span>
+                    <span class="role-card-label">Discord Moderator</span>
+                </div>
+                <div class="role-card" data-role="community" onclick="selectRole(this)">
+                    <span class="role-card-icon">🌟</span>
+                    <span class="role-card-label">Community Engagement</span>
+                </div>
+                <div class="role-card" data-role="bible-study" onclick="selectRole(this)">
+                    <span class="role-card-icon">📖</span>
+                    <span class="role-card-label">Bible Study Leader</span>
+                </div>
             </div>
         </div>
 
-        <!-- Core Questions (always visible after role selected) -->
+        <!-- Role Prompt -->
         <div id="role-prompt" class="role-prompt">
             <span class="role-prompt-icon">☝️</span>
             <p>Select a role above to continue your application.</p>
@@ -422,28 +467,22 @@ extraStyles: |
 
             <!-- Basic Info -->
             <div class="form-section">
-                <div class="form-section-title">
-                    <span>👤</span> Basic Information
-                </div>
-
+                <div class="form-section-title"><span>👤</span> Basic Information</div>
                 <div class="form-group">
                     <label class="form-label">Full Name <span class="required">*</span></label>
                     <input type="text" class="form-input" id="field-name" name="name" placeholder="Your name" required>
                     <span class="error-msg" id="err-name">Please enter your name.</span>
                 </div>
-
                 <div class="form-group">
                     <label class="form-label">Email Address <span class="required">*</span></label>
                     <input type="email" class="form-input" id="field-email" name="email" placeholder="your@email.com" required>
                     <span class="error-msg" id="err-email">Please enter a valid email address.</span>
                 </div>
-
                 <div class="form-group">
                     <label class="form-label">Discord Username <span class="required">*</span></label>
                     <input type="text" class="form-input" id="field-discord" name="discord" placeholder="username (e.g. elijah)" required>
                     <span class="error-msg" id="err-discord">Please enter your Discord username.</span>
                 </div>
-
                 <div class="form-group">
                     <label class="form-label">Age <span class="required">*</span></label>
                     <select class="form-select" id="field-age" name="age" required>
@@ -459,10 +498,21 @@ extraStyles: |
                 </div>
             </div>
 
-            <!-- Role: Game Developer -->
+            <!-- ROLE: Game Developer -->
             <div id="questions-game-developer" class="dynamic-questions">
                 <div class="form-section">
-                    <div class="form-section-title"><span>🎮</span> Game Developer Questions</div>
+                    <div class="form-section-title"><span>🎮</span> Game Developer</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Build the games that carry our mission. As a Game Developer at Seventh Day Studios, you'll work directly on our titles — from core mechanics to systems design — helping bring faith-driven stories to life through code.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Experience with at least one game engine (Unity, Godot, Unreal, etc.)</li>
+                            <li>Able to work collaboratively in a remote, async team environment</li>
+                            <li>Respect for the studio's Christian mission and content standards</li>
+                            <li>Able to commit consistent hours per week to active development</li>
+                        </ul>
+                    </div>
                     <div class="form-group">
                         <label class="form-label">What game engines or languages do you work with? <span class="required">*</span></label>
                         <input type="text" class="form-input role-field" name="dev_tools" placeholder="e.g. Unity, Godot, C#, GDScript...">
@@ -489,10 +539,21 @@ extraStyles: |
                 </div>
             </div>
 
-            <!-- Role: Artist / Designer -->
+            <!-- ROLE: Artist / Designer -->
             <div id="questions-artist" class="dynamic-questions">
                 <div class="form-section">
-                    <div class="form-section-title"><span>🎨</span> Artist / Designer Questions</div>
+                    <div class="form-section-title"><span>🎨</span> Artist / Designer</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Shape the visual identity of our games. As an Artist or Designer, you'll create the concept art, UI, environments, and characters that define the look and feel of Seventh Day Studios' titles.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>A portfolio demonstrating your art style and range</li>
+                            <li>Proficiency in at least one industry-standard design tool</li>
+                            <li>Ability to adapt your style to fit a faith-driven aesthetic</li>
+                            <li>Open to feedback and collaborative iteration</li>
+                        </ul>
+                    </div>
                     <div class="form-group">
                         <label class="form-label">What type of art do you create? <span class="required">*</span></label>
                         <select class="form-select role-field" name="art_type">
@@ -522,10 +583,21 @@ extraStyles: |
                 </div>
             </div>
 
-            <!-- Role: Music / Audio -->
+            <!-- ROLE: Music / Audio -->
             <div id="questions-music" class="dynamic-questions">
                 <div class="form-section">
-                    <div class="form-section-title"><span>🎵</span> Music / Audio Questions</div>
+                    <div class="form-section-title"><span>🎵</span> Music / Audio</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Set the tone for our worlds. As a Music or Audio specialist, you'll compose soundtracks, design sound effects, or provide voice work that immerses players in our faith-driven game experiences.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Demonstrable experience composing or producing audio</li>
+                            <li>Access to appropriate software or instruments for your specialty</li>
+                            <li>Ability to deliver files in game-ready formats</li>
+                            <li>Respect for the tone and values of our content</li>
+                        </ul>
+                    </div>
                     <div class="form-group">
                         <label class="form-label">What is your specialty? <span class="required">*</span></label>
                         <select class="form-select role-field" name="music_type">
@@ -552,10 +624,21 @@ extraStyles: |
                 </div>
             </div>
 
-            <!-- Role: Writer / Narrative -->
+            <!-- ROLE: Writer / Narrative -->
             <div id="questions-writer" class="dynamic-questions">
                 <div class="form-section">
-                    <div class="form-section-title"><span>✍️</span> Writer / Narrative Questions</div>
+                    <div class="form-section-title"><span>✍️</span> Writer / Narrative</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Craft the stories that move players. As a Writer or Narrative Designer, you'll shape dialogue, lore, and world-building for games that weave faith themes naturally into compelling, memorable experiences.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Strong written communication and storytelling ability</li>
+                            <li>Experience with narrative writing, dialogue, or worldbuilding</li>
+                            <li>Ability to handle spiritual themes with nuance — no heavy-handed preaching</li>
+                            <li>Open to editorial feedback and collaborative writing processes</li>
+                        </ul>
+                    </div>
                     <div class="form-group">
                         <label class="form-label">What type of writing do you do? <span class="required">*</span></label>
                         <select class="form-select role-field" name="write_type">
@@ -583,10 +666,21 @@ extraStyles: |
                 </div>
             </div>
 
-            <!-- Role: Social Media Manager -->
+            <!-- ROLE: Social Media Manager -->
             <div id="questions-social" class="dynamic-questions">
                 <div class="form-section">
-                    <div class="form-section-title"><span>📣</span> Social Media Manager Questions</div>
+                    <div class="form-section-title"><span>📣</span> Social Media Manager</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Be the voice of Seventh Day Studios online. You'll manage our social media presence, create content, and grow our audience authentically across platforms — all while staying true to our faith-driven brand.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Experience managing social media accounts or creating content</li>
+                            <li>Strong understanding of platform-specific best practices</li>
+                            <li>Able to maintain a consistent posting schedule</li>
+                            <li>Brand-aware — all content must reflect our Christian values</li>
+                        </ul>
+                    </div>
                     <div class="form-group">
                         <label class="form-label">Which platforms are you most experienced with? <span class="required">*</span></label>
                         <input type="text" class="form-input role-field" name="social_platforms" placeholder="e.g. Instagram, TikTok, X, Threads, YouTube...">
@@ -613,7 +707,236 @@ extraStyles: |
                 </div>
             </div>
 
-            <!-- Shared Final Questions -->
+            <!-- ROLE: Movie Night Host -->
+            <div id="questions-movie-host" class="dynamic-questions">
+                <div class="form-section">
+                    <div class="form-section-title"><span>🎬</span> Movie Night Host</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Host weekly movie nights in our Discord server, selecting faith-friendly films and leading discussions afterward. You'll help bring the community together through shared viewing experiences that entertain, inspire, and reflect our values.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Must host at least 1 movie night per week (2 preferred)</li>
+                            <li>Comfortable leading events in a voice or stage channel</li>
+                            <li>Must maintain a consistent, reliable weekly schedule</li>
+                            <li>All film selections must align with our Christian content standards</li>
+                            <li>Active and engaged Discord presence</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Have you hosted events or screenings before? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="movie_experience">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes-discord">Yes, on Discord</option>
+                            <option value="yes-other">Yes, on another platform</option>
+                            <option value="yes-irl">Yes, in person</option>
+                            <option value="no">No, but I'm confident I can</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">What kinds of films would you select for our community? <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="movie_selections" placeholder="Give us examples — genres, specific films, themes you'd focus on..."></textarea>
+                        <span class="char-counter" id="cc-movie-selections">0 / 500</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Can you commit to at least one movie night per week? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="movie_commitment">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="1-per-week">Yes, 1 per week</option>
+                            <option value="2-per-week">Yes, 2 per week</option>
+                            <option value="not-sure">I'm not sure yet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">How would you lead a post-movie discussion? <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="movie_discussion" placeholder="Walk us through how you'd facilitate conversation after a film..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROLE: Game Night Host -->
+            <div id="questions-game-night-host" class="dynamic-questions">
+                <div class="form-section">
+                    <div class="form-section-title"><span>🕹️</span> Game Night Host</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Plan and host community game nights and events in our Discord server. You'll keep members engaged through fun, faith-friendly gaming sessions — organizing multiplayer events, tournaments, and creative activities that bring our community together.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Active Discord presence and strong communication skills</li>
+                            <li>Comfortable organizing and leading group events</li>
+                            <li>Able to commit to at least 1 hosted game night per week</li>
+                            <li>Creative — able to plan varied events that keep things fresh</li>
+                            <li>Familiar with multiplayer games appropriate for a Christian community</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Have you hosted gaming events or community nights before? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="gamenight_experience">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes-discord">Yes, on Discord</option>
+                            <option value="yes-other">Yes, on another platform</option>
+                            <option value="no">No, but I'm confident I can</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">What games or event formats would you bring to the community? <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="gamenight_ideas" placeholder="Give us specific game ideas, event types, tournament formats, etc..."></textarea>
+                        <span class="char-counter" id="cc-gamenight-ideas">0 / 500</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Can you commit to at least one game night per week? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="gamenight_commitment">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes-1">Yes, 1 per week</option>
+                            <option value="yes-more">Yes, more than 1 per week</option>
+                            <option value="not-sure">I'm not sure yet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">How would you keep energy high and members coming back? <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="gamenight_energy" placeholder="How do you plan to keep events engaging and the community excited?"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROLE: Discord Moderator -->
+            <div id="questions-moderator" class="dynamic-questions">
+                <div class="form-section">
+                    <div class="form-section-title"><span>🛡️</span> Discord Moderator</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Keep the Seventh Day Studios Discord community safe, welcoming, and on-mission. As a Moderator, you'll enforce our rules, support members, resolve conflicts, and help maintain an environment where faith and gaming go hand in hand.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Must be 16 or older</li>
+                            <li>Prior moderation experience preferred</li>
+                            <li>Available daily or near-daily</li>
+                            <li>Patient, fair, and conflict-resolution minded</li>
+                            <li>Strong understanding and respect for our faith-based community values</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Do you have prior moderation experience? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="mod_experience">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes-discord">Yes, on Discord</option>
+                            <option value="yes-other">Yes, on other platforms</option>
+                            <option value="no">No prior experience</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Describe a time you handled a conflict or difficult situation. <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="mod_conflict" placeholder="This can be online or real life. How did you handle it and what was the outcome?"></textarea>
+                        <span class="char-counter" id="cc-mod-conflict">0 / 500</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">How available are you on Discord daily? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="mod_availability">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="always-on">Very active — online most of the day</option>
+                            <option value="several-times">Several times a day</option>
+                            <option value="once-daily">Once a day</option>
+                            <option value="few-times-week">A few times a week</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">What does a healthy faith-based community look like to you? <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="mod_values" placeholder="Tell us how you'd uphold our values while moderating..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROLE: Community Engagement Specialist -->
+            <div id="questions-community" class="dynamic-questions">
+                <div class="form-section">
+                    <div class="form-section-title"><span>🌟</span> Community Engagement Specialist</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Be the heartbeat of our community. You'll keep the Discord server active and energized — sparking conversations, welcoming new members, running engagement activities, and making the server feel alive every single day.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Must be highly active in Discord — multiple times per day</li>
+                            <li>Creative, personable, and a natural people-person</li>
+                            <li>Able to independently plan and run engagement activities</li>
+                            <li>Passionate about community-building around faith and gaming</li>
+                            <li>Self-motivated — this role requires initiative, not just participation</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">How active are you on Discord daily? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="community_activity">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="all-day">Online most of the day</option>
+                            <option value="several-times">Multiple times a day</option>
+                            <option value="once-daily">Once a day</option>
+                            <option value="few-times-week">A few times a week</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Give us 3 specific ideas to keep the server engaged this week. <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="community_ideas" placeholder="Be specific — what would you actually do? Think events, conversation starters, challenges..."></textarea>
+                        <span class="char-counter" id="cc-community-ideas">0 / 600</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">How would you welcome and retain new members? <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="community_retention" placeholder="Walk us through your approach to making newcomers feel at home..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Have you built or helped grow an online community before?</label>
+                        <textarea class="form-textarea role-field" name="community_experience" placeholder="Optional — share any relevant experience..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROLE: Bible Study Leader -->
+            <div id="questions-bible-study" class="dynamic-questions">
+                <div class="form-section">
+                    <div class="form-section-title"><span>📖</span> Bible Study Leader</div>
+                    <div class="role-info-box">
+                        <h3>About This Role</h3>
+                        <p>Lead our community deeper into the Word. As a Bible Study Leader, you'll plan and host regular Bible study sessions in our Discord server — connecting scripture to gaming, creativity, and the everyday lives of our members.</p>
+                        <h3 style="margin-top:0.75rem;">Requirements</h3>
+                        <ul class="role-requirements">
+                            <li>Must be 17 or older</li>
+                            <li>Strong personal faith and solid biblical knowledge</li>
+                            <li>Comfortable leading and facilitating group discussions</li>
+                            <li>Able to commit to at least 1 session per week</li>
+                            <li>No formal qualifications required — just genuine passion for the Word</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Describe your personal faith background. <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="bible_faith" placeholder="Tell us about your walk with God and how it shapes your daily life..."></textarea>
+                        <span class="char-counter" id="cc-bible-faith">0 / 500</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Have you led a Bible study or group discussion before? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="bible_experience">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes-led">Yes, I've led sessions</option>
+                            <option value="yes-participated">I've participated but not led</option>
+                            <option value="no">No, but I'm ready to start</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">What scripture or topic would you start with and why? <span class="required">*</span></label>
+                        <textarea class="form-textarea role-field" name="bible_topic" placeholder="Give us an example of a study you'd lead — topic, passage, discussion questions..."></textarea>
+                        <span class="char-counter" id="cc-bible-topic">0 / 500</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Can you commit to at least one session per week? <span class="required">*</span></label>
+                        <select class="form-select role-field" name="bible_commitment">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes-1">Yes, 1 per week</option>
+                            <option value="yes-more">Yes, more than 1 per week</option>
+                            <option value="not-sure">I'm not sure yet</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Questions (all roles) -->
             <div class="form-section">
                 <div class="form-section-title"><span>🙏</span> Final Questions</div>
                 <div class="form-group">
@@ -628,7 +951,6 @@ extraStyles: |
                 </div>
             </div>
 
-            <!-- Hidden Fields for Netlify -->
             <input type="hidden" id="field-role" name="role" value="">
 
             <div class="submit-section">
@@ -639,10 +961,7 @@ extraStyles: |
             </div>
 
         </div>
-        <!-- end core-questions -->
-
     </div>
-    <!-- end application-form -->
 
     <!-- Success Message -->
     <div id="success-message" class="success-message">
@@ -659,40 +978,99 @@ extraStyles: |
     const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1479172240502427648/VGdTIxH9EtYUXHhCs16bLx0598PuMfaxAN1OU-b_soyIVFSs5hVOYHfM3BTuLC5-gLFQ';
 
     const roleLabels = {
-        'game-developer': '🎮 Game Developer',
-        'artist':         '🎨 Artist / Designer',
-        'music':          '🎵 Music / Audio',
-        'writer':         '✍️ Writer / Narrative',
-        'social':         '📣 Social Media Manager'
+        'game-developer':   '🎮 Game Developer',
+        'artist':           '🎨 Artist / Designer',
+        'music':            '🎵 Music / Audio',
+        'writer':           '✍️ Writer / Narrative',
+        'social':           '📣 Social Media Manager',
+        'movie-host':       '🎬 Movie Night Host',
+        'game-night-host':  '🕹️ Game Night Host',
+        'moderator':        '🛡️ Discord Moderator',
+        'community':        '🌟 Community Engagement Specialist',
+        'bible-study':      '📖 Bible Study Leader'
+    };
+
+    const roleFieldMap = {
+        'game-developer':  [
+            { key: 'dev_tools',     label: '🛠️ Tools / Engines' },
+            { key: 'dev_project',   label: '📁 Project Experience' },
+            { key: 'dev_portfolio', label: '🔗 Portfolio / GitHub' },
+            { key: 'dev_hours',     label: '⏱️ Availability' },
+        ],
+        'artist': [
+            { key: 'art_type',      label: '🎨 Art Type' },
+            { key: 'art_tools',     label: '🛠️ Tools' },
+            { key: 'art_portfolio', label: '🔗 Portfolio' },
+            { key: 'art_style',     label: '🖌️ Art Style' },
+        ],
+        'music': [
+            { key: 'music_type',      label: '🎵 Specialty' },
+            { key: 'music_tools',     label: '🛠️ Tools / Instruments' },
+            { key: 'music_portfolio', label: '🔗 Sample Work' },
+            { key: 'music_style',     label: '🎼 Musical Style' },
+        ],
+        'writer': [
+            { key: 'write_type',        label: '✍️ Writing Type' },
+            { key: 'write_portfolio',   label: '🔗 Portfolio' },
+            { key: 'write_faith',       label: '✝️ Faith in Storytelling' },
+            { key: 'write_inspiration', label: '💡 Inspiration' },
+        ],
+        'social': [
+            { key: 'social_platforms', label: '📱 Platforms' },
+            { key: 'social_portfolio', label: '🔗 Example Account' },
+            { key: 'social_strategy',  label: '📈 Growth Strategy' },
+            { key: 'social_hours',     label: '⏱️ Availability' },
+        ],
+        'movie-host': [
+            { key: 'movie_experience',  label: '🎬 Prior Hosting Experience' },
+            { key: 'movie_selections',  label: '🎥 Film Selections' },
+            { key: 'movie_commitment',  label: '📅 Weekly Commitment' },
+            { key: 'movie_discussion',  label: '💬 Post-Movie Discussion Approach' },
+        ],
+        'game-night-host': [
+            { key: 'gamenight_experience',  label: '🕹️ Prior Event Experience' },
+            { key: 'gamenight_ideas',       label: '💡 Event Ideas' },
+            { key: 'gamenight_commitment',  label: '📅 Weekly Commitment' },
+            { key: 'gamenight_energy',      label: '⚡ Keeping Energy High' },
+        ],
+        'moderator': [
+            { key: 'mod_experience',    label: '🛡️ Prior Mod Experience' },
+            { key: 'mod_conflict',      label: '⚖️ Conflict Handling' },
+            { key: 'mod_availability',  label: '🕐 Daily Availability' },
+            { key: 'mod_values',        label: '✝️ Community Values' },
+        ],
+        'community': [
+            { key: 'community_activity',   label: '📊 Daily Activity Level' },
+            { key: 'community_ideas',      label: '💡 Engagement Ideas' },
+            { key: 'community_retention',  label: '🤝 Member Retention Approach' },
+            { key: 'community_experience', label: '📖 Prior Community Experience' },
+        ],
+        'bible-study': [
+            { key: 'bible_faith',       label: '✝️ Faith Background' },
+            { key: 'bible_experience',  label: '📖 Study Leader Experience' },
+            { key: 'bible_topic',       label: '📝 Sample Study Topic' },
+            { key: 'bible_commitment',  label: '📅 Weekly Commitment' },
+        ],
     };
 
     let selectedRole = null;
 
     function selectRole(card) {
-        // Deselect all
         document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
-
         selectedRole = card.dataset.role;
         document.getElementById('field-role').value = selectedRole;
 
-        // Hide all role question blocks
-        document.querySelectorAll('[id^="questions-"]').forEach(el => {
-            el.classList.remove('visible');
-        });
-
-        // Show selected role questions
+        document.querySelectorAll('[id^="questions-"]').forEach(el => el.classList.remove('visible'));
         const block = document.getElementById('questions-' + selectedRole);
         if (block) block.classList.add('visible');
 
-        // Show core questions
         document.getElementById('role-prompt').style.display = 'none';
         document.getElementById('core-questions').classList.add('visible');
     }
 
-    // Character counters
-    function initCharCounter(textareaSelector, counterId, max) {
-        const ta = document.querySelector(textareaSelector);
+    function initCharCounter(selector, counterId, max) {
+        const ta = document.querySelector(selector);
         const counter = document.getElementById(counterId);
         if (!ta || !counter) return;
         ta.addEventListener('input', () => {
@@ -702,146 +1080,95 @@ extraStyles: |
         });
     }
 
-    initCharCounter('[name="dev_project"]',    'cc-dev-project',    500);
-    initCharCounter('[name="art_style"]',       'cc-art-style',      500);
-    initCharCounter('[name="music_style"]',     'cc-music-style',    500);
-    initCharCounter('[name="write_faith"]',     'cc-write-faith',    500);
-    initCharCounter('[name="social_strategy"]', 'cc-social-strategy',500);
-    initCharCounter('[name="why_join"]',        'cc-why',            600);
+    initCharCounter('[name="dev_project"]',         'cc-dev-project',       500);
+    initCharCounter('[name="art_style"]',            'cc-art-style',         500);
+    initCharCounter('[name="music_style"]',          'cc-music-style',       500);
+    initCharCounter('[name="write_faith"]',          'cc-write-faith',       500);
+    initCharCounter('[name="social_strategy"]',      'cc-social-strategy',   500);
+    initCharCounter('[name="movie_selections"]',     'cc-movie-selections',  500);
+    initCharCounter('[name="gamenight_ideas"]',      'cc-gamenight-ideas',   500);
+    initCharCounter('[name="mod_conflict"]',         'cc-mod-conflict',      500);
+    initCharCounter('[name="community_ideas"]',      'cc-community-ideas',   600);
+    initCharCounter('[name="bible_faith"]',          'cc-bible-faith',       500);
+    initCharCounter('[name="bible_topic"]',          'cc-bible-topic',       500);
+    initCharCounter('[name="why_join"]',             'cc-why',               600);
 
     function getFormData() {
         const data = {};
-        // Core fields
-        data.role    = document.getElementById('field-role').value;
-        data.name    = document.getElementById('field-name').value.trim();
-        data.email   = document.getElementById('field-email').value.trim();
-        data.discord = document.getElementById('field-discord').value.trim();
-        data.age     = document.getElementById('field-age').value;
-        data.why_join = document.getElementById('field-why').value.trim();
+        data.role       = document.getElementById('field-role').value;
+        data.name       = document.getElementById('field-name').value.trim();
+        data.email      = document.getElementById('field-email').value.trim();
+        data.discord    = document.getElementById('field-discord').value.trim();
+        data.age        = document.getElementById('field-age').value;
+        data.why_join   = document.getElementById('field-why').value.trim();
         data.additional = document.querySelector('[name="additional"]')?.value.trim() || '';
 
-        // Role-specific fields
-        document.querySelectorAll('.role-field').forEach(field => {
-            if (field.closest('.dynamic-questions.visible') || field.closest('[id^="questions-' + selectedRole + '"]')) {
+        const activeBlock = document.getElementById('questions-' + selectedRole);
+        if (activeBlock) {
+            activeBlock.querySelectorAll('.role-field').forEach(field => {
                 data[field.name] = field.value.trim();
-            }
-        });
-
+            });
+        }
         return data;
     }
 
     function validate(data) {
         let valid = true;
+        ['field-name','field-email','field-discord','field-age','field-why'].forEach(id => {
+            document.getElementById(id)?.classList.remove('error');
+        });
+        ['err-name','err-email','err-discord','err-age','err-why'].forEach(id => {
+            document.getElementById(id)?.classList.remove('visible');
+        });
 
-        const clearError = (id) => {
-            const el = document.getElementById(id);
-            if (el) el.classList.remove('visible');
-        };
-        const showError = (fieldId, errId) => {
-            const field = document.getElementById(fieldId);
-            const err = document.getElementById(errId);
-            if (field) field.classList.add('error');
-            if (err) err.classList.add('visible');
+        const showError = (fid, eid) => {
+            document.getElementById(fid)?.classList.add('error');
+            document.getElementById(eid)?.classList.add('visible');
             valid = false;
         };
-
-        ['field-name','field-email','field-discord','field-age','field-why'].forEach(id => {
-            const field = document.getElementById(id);
-            if (field) field.classList.remove('error');
-        });
-        ['err-name','err-email','err-discord','err-age','err-why'].forEach(clearError);
 
         if (!data.name)    showError('field-name',    'err-name');
         if (!data.email || !data.email.includes('@')) showError('field-email', 'err-email');
         if (!data.discord) showError('field-discord', 'err-discord');
         if (!data.age)     showError('field-age',     'err-age');
         if (!data.why_join) showError('field-why',    'err-why');
-
         return valid;
     }
 
     async function sendToDiscord(data) {
         const roleLabel = roleLabels[data.role] || data.role;
-
-        // Build field list for embed
         const fields = [
-            { name: '📋 Role Applied', value: roleLabel, inline: true },
-            { name: '👤 Name',         value: data.name,    inline: true },
-            { name: '📧 Email',        value: data.email,   inline: true },
-            { name: '💬 Discord',      value: data.discord, inline: true },
-            { name: '🎂 Age Range',    value: data.age,     inline: true },
+            { name: '📋 Role Applied', value: roleLabel,     inline: true },
+            { name: '👤 Name',         value: data.name,     inline: true },
+            { name: '📧 Email',        value: data.email,    inline: true },
+            { name: '💬 Discord',      value: data.discord,  inline: true },
+            { name: '🎂 Age Range',    value: data.age,      inline: true },
         ];
 
-        // Role-specific fields
-        const roleFieldMap = {
-            'game-developer': [
-                { key: 'dev_tools',     label: '🛠️ Tools / Engines' },
-                { key: 'dev_project',   label: '📁 Project Experience' },
-                { key: 'dev_portfolio', label: '🔗 Portfolio / GitHub' },
-                { key: 'dev_hours',     label: '⏱️ Availability' },
-            ],
-            'artist': [
-                { key: 'art_type',      label: '🎨 Art Type' },
-                { key: 'art_tools',     label: '🛠️ Tools' },
-                { key: 'art_portfolio', label: '🔗 Portfolio' },
-                { key: 'art_style',     label: '🖌️ Art Style' },
-            ],
-            'music': [
-                { key: 'music_type',      label: '🎵 Specialty' },
-                { key: 'music_tools',     label: '🛠️ Tools / Instruments' },
-                { key: 'music_portfolio', label: '🔗 Sample Work' },
-                { key: 'music_style',     label: '🎼 Musical Style' },
-            ],
-            'writer': [
-                { key: 'write_type',        label: '✍️ Writing Type' },
-                { key: 'write_portfolio',   label: '🔗 Portfolio' },
-                { key: 'write_faith',       label: '✝️ Faith in Storytelling' },
-                { key: 'write_inspiration', label: '💡 Inspiration' },
-            ],
-            'social': [
-                { key: 'social_platforms', label: '📱 Platforms' },
-                { key: 'social_portfolio', label: '🔗 Example Account' },
-                { key: 'social_strategy',  label: '📈 Growth Strategy' },
-                { key: 'social_hours',     label: '⏱️ Availability' },
-            ],
-        };
-
-        const roleFields = roleFieldMap[data.role] || [];
-        roleFields.forEach(({ key, label }) => {
-            if (data[key]) {
-                fields.push({ name: label, value: data[key].substring(0, 1024), inline: false });
-            }
+        (roleFieldMap[data.role] || []).forEach(({ key, label }) => {
+            if (data[key]) fields.push({ name: label, value: data[key].substring(0, 1024), inline: false });
         });
 
-        if (data.why_join) {
-            fields.push({ name: '🙏 Why Join Us', value: data.why_join.substring(0, 1024), inline: false });
-        }
-        if (data.additional) {
-            fields.push({ name: '📝 Additional Notes', value: data.additional.substring(0, 1024), inline: false });
-        }
-
-        const payload = {
-            embeds: [{
-                title: '📬 New Application — ' + roleLabel,
-                color: 0xd4a84b,
-                fields: fields,
-                footer: { text: 'Seventh Day Studios • Application System' },
-                timestamp: new Date().toISOString()
-            }]
-        };
+        if (data.why_join)   fields.push({ name: '🙏 Why Join Us',       value: data.why_join.substring(0, 1024),   inline: false });
+        if (data.additional) fields.push({ name: '📝 Additional Notes',  value: data.additional.substring(0, 1024), inline: false });
 
         await fetch(DISCORD_WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+            body: JSON.stringify({
+                embeds: [{
+                    title: '📬 New Application — ' + roleLabel,
+                    color: 0xd4a84b,
+                    fields,
+                    footer: { text: 'Seventh Day Studios • Application System' },
+                    timestamp: new Date().toISOString()
+                }]
+            })
         });
     }
 
     async function submitApplication() {
-        if (!selectedRole) {
-            alert('Please select a role before submitting.');
-            return;
-        }
+        if (!selectedRole) { alert('Please select a role before submitting.'); return; }
 
         const data = getFormData();
         if (!validate(data)) {
@@ -854,28 +1181,17 @@ extraStyles: |
         btn.textContent = 'Submitting...';
 
         try {
-            // 1. Send to Netlify Forms
-            const formBody = new URLSearchParams({
-                'form-name': 'application',
-                ...data
-            });
-
             await fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: formBody.toString()
+                body: new URLSearchParams({ 'form-name': 'application', ...data }).toString()
             });
 
-            // 2. Send to Discord webhook
-            if (DISCORD_WEBHOOK_URL && DISCORD_WEBHOOK_URL !== 'YOUR_DISCORD_WEBHOOK_URL_HERE') {
-                await sendToDiscord(data);
-            }
+            await sendToDiscord(data);
 
-            // Show success
             document.getElementById('application-form').style.display = 'none';
             document.getElementById('success-message').classList.add('visible');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
         } catch (err) {
             btn.disabled = false;
             btn.textContent = '✝️ Submit Application';
@@ -885,18 +1201,17 @@ extraStyles: |
     }
 </script>
 
-<!-- Hidden Netlify Forms detection form (required for Netlify to register the form) -->
 <form name="application" netlify netlify-honeypot="bot-field" hidden>
-    <input name="role">
-    <input name="name">
-    <input name="email">
-    <input name="discord">
-    <input name="age">
-    <input name="why_join">
-    <input name="additional">
+    <input name="role"> <input name="name"> <input name="email"> <input name="discord"> <input name="age">
+    <input name="why_join"> <input name="additional">
     <input name="dev_tools"> <input name="dev_project"> <input name="dev_portfolio"> <input name="dev_hours">
     <input name="art_type"> <input name="art_tools"> <input name="art_portfolio"> <input name="art_style">
     <input name="music_type"> <input name="music_tools"> <input name="music_portfolio"> <input name="music_style">
     <input name="write_type"> <input name="write_portfolio"> <input name="write_faith"> <input name="write_inspiration">
     <input name="social_platforms"> <input name="social_portfolio"> <input name="social_strategy"> <input name="social_hours">
+    <input name="movie_experience"> <input name="movie_selections"> <input name="movie_commitment"> <input name="movie_discussion">
+    <input name="gamenight_experience"> <input name="gamenight_ideas"> <input name="gamenight_commitment"> <input name="gamenight_energy">
+    <input name="mod_experience"> <input name="mod_conflict"> <input name="mod_availability"> <input name="mod_values">
+    <input name="community_activity"> <input name="community_ideas"> <input name="community_retention"> <input name="community_experience">
+    <input name="bible_faith"> <input name="bible_experience"> <input name="bible_topic"> <input name="bible_commitment">
 </form>
