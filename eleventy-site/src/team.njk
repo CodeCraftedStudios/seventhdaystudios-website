@@ -1,0 +1,852 @@
+---
+layout: base.njk
+title: Meet the Team
+extraStyles: |
+    .team-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem 6rem;
+    }
+
+    /* ── Founder Feature ── */
+    .founder-feature {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 3rem;
+        align-items: flex-start;
+        margin-bottom: 5rem;
+        padding-bottom: 5rem;
+        border-bottom: 1px solid rgba(212, 168, 75, 0.1);
+    }
+
+    .founder-photo-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        flex-shrink: 0;
+    }
+
+    .team-photo {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 20%;
+        border: 3px solid rgba(212, 168, 75, 0.4);
+        box-shadow: 0 0 30px rgba(107, 63, 160, 0.4), 0 0 60px rgba(212, 168, 75, 0.1);
+        display: block;
+    }
+
+    .team-photo-placeholder {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--mystic-purple), var(--royal-purple));
+        border: 3px solid rgba(212, 168, 75, 0.3);
+        box-shadow: 0 0 30px rgba(107, 63, 160, 0.3), 0 0 60px rgba(212, 168, 75, 0.07);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+        flex-shrink: 0;
+    }
+
+    /* Smaller placeholder for grid cards */
+    .team-card .team-photo-placeholder {
+        width: 110px;
+        height: 110px;
+        font-size: 2.25rem;
+        border-width: 2px;
+        margin: 0 auto 1.25rem;
+    }
+
+    .member-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--divine-gold);
+        opacity: 0.85;
+    }
+
+    .member-badge::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--divine-gold);
+        opacity: 0.7;
+    }
+
+    /* Founder info panel */
+    .founder-info {
+        padding-top: 0.25rem;
+    }
+
+    .founder-info .member-badge {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .founder-name {
+        font-family: 'Cinzel', serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--pale-gold);
+        margin-bottom: 0.15rem;
+        line-height: 1.2;
+    }
+
+    .founder-role {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 1rem;
+        color: var(--divine-gold);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+    }
+
+    .founder-bio-text {
+        font-size: 1.05rem;
+        color: var(--text-light);
+        line-height: 1.85;
+        margin-bottom: 1rem;
+    }
+
+    /* ── Section heading ── */
+    .team-section-label {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    /* ── Team Grid ── */
+    .team-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+    }
+
+    .team-card {
+        background: linear-gradient(135deg, rgba(74, 44, 122, 0.3), rgba(45, 27, 78, 0.5));
+        border: 1px solid rgba(212, 168, 75, 0.12);
+        border-radius: 16px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 0 2rem;
+        text-align: left;
+        align-items: start;
+    }
+
+    .team-card-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 0.25rem;
+        grid-row: 1 / -1;
+    }
+
+    .team-card-right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .team-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, var(--divine-gold), transparent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .team-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(212, 168, 75, 0.28);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .team-card:hover::before {
+        opacity: 1;
+    }
+
+    .card-member-name {
+        font-family: 'Cinzel', serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--pale-gold);
+        margin-bottom: 0.2rem;
+    }
+
+    .card-member-role {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 0.85rem;
+        color: var(--divine-gold);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 1.25rem;
+    }
+
+    .card-divider {
+        width: 40px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.4), transparent);
+        margin: 0 auto 1.25rem;
+    }
+
+    .card-bio {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.75;
+        text-align: left;
+        flex: 1;
+    }
+
+    /* Responsibilities block (RJ only) */
+    .responsibilities {
+        margin-top: 1.5rem;
+        text-align: left;
+        border-top: 1px solid rgba(212, 168, 75, 0.08);
+        padding-top: 1.5rem;
+    }
+
+    .responsibilities-title {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--divine-gold);
+        opacity: 0.7;
+        margin-bottom: 1rem;
+    }
+
+    .responsibility-group {
+        margin-bottom: 1.1rem;
+    }
+
+    .responsibility-group-label {
+        font-family: 'Cinzel', serif;
+        font-size: 0.82rem;
+        color: var(--pale-gold);
+        margin-bottom: 0.4rem;
+        opacity: 0.9;
+    }
+
+    .responsibility-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .responsibility-list li {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.55;
+        padding-left: 1rem;
+        position: relative;
+    }
+
+    .responsibility-list li::before {
+        content: '·';
+        position: absolute;
+        left: 0;
+        color: var(--divine-gold);
+        opacity: 0.6;
+    }
+
+    /* ── Hiring Section ── */
+    .hiring-section {
+        margin-top: 5rem;
+        padding-top: 5rem;
+        border-top: 1px solid rgba(212, 168, 75, 0.1);
+    }
+
+    .hiring-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .hiring-header p.hiring-desc {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        max-width: 620px;
+        margin: 1rem auto 0;
+        line-height: 1.75;
+    }
+
+    .roles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+        margin-bottom: 3rem;
+    }
+
+    .role-card-item {
+        background: linear-gradient(135deg, rgba(74, 44, 122, 0.3), rgba(45, 27, 78, 0.5));
+        border: 1px solid rgba(212, 168, 75, 0.12);
+        border-radius: 14px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .role-card-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, var(--divine-gold), transparent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .role-card-item:hover {
+        transform: translateY(-5px);
+        border-color: rgba(212, 168, 75, 0.28);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+    }
+
+    .role-card-item:hover::before {
+        opacity: 1;
+    }
+
+    .role-card-top {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+    }
+
+    .role-card-emoji {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--mystic-purple), var(--royal-purple));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        flex-shrink: 0;
+    }
+
+    .role-card-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--pale-gold);
+        line-height: 1.3;
+    }
+
+    .role-card-desc {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+    }
+
+    .role-card-category {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--divine-gold);
+        opacity: 0.75;
+        margin-top: auto;
+        padding-top: 0.5rem;
+    }
+
+    .role-card-category::before {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--divine-gold);
+        opacity: 0.7;
+    }
+
+    .hiring-cta {
+        text-align: center;
+        background: linear-gradient(135deg, rgba(74, 44, 122, 0.3), rgba(45, 27, 78, 0.5));
+        border: 1px solid rgba(212, 168, 75, 0.2);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+    }
+
+    .hiring-cta h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: var(--pale-gold);
+        margin-bottom: 0.75rem;
+    }
+
+    .hiring-cta p {
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.7;
+        max-width: 520px;
+        margin: 0 auto 1.75rem;
+    }
+
+    /* ── Skills ── */
+    .skills {
+        margin-top: 1.25rem;
+        border-top: 1px solid rgba(212, 168, 75, 0.08);
+        padding-top: 1.25rem;
+    }
+
+    .skills-title {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--divine-gold);
+        opacity: 0.7;
+        margin-bottom: 0.75rem;
+    }
+
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .skill-tag {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--divine-gold);
+        background: rgba(212, 168, 75, 0.08);
+        border: 1px solid rgba(212, 168, 75, 0.2);
+        border-radius: 20px;
+        padding: 0.25rem 0.75rem;
+        letter-spacing: 0.03em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+        .founder-feature {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .founder-photo-wrap {
+            margin: 0 auto;
+        }
+
+        .founder-info .member-badge {
+            justify-content: center;
+        }
+
+        .founder-bio-text {
+            text-align: left;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .team-container {
+            padding: 0 1rem 4rem;
+        }
+
+        .team-card {
+            grid-template-columns: 1fr;
+        }
+
+        .team-card-left {
+            grid-row: auto;
+            margin-bottom: 1.25rem;
+        }
+
+        .founder-name {
+            font-size: 1.6rem;
+        }
+
+        .team-photo,
+        .founder-feature .team-photo-placeholder {
+            width: 150px;
+            height: 150px;
+        }
+    }
+---
+
+<div class="page-header">
+    <h1>Meet the Team</h1>
+    <p>The people behind Seventh Day Studios, building something that matters.</p>
+</div>
+
+<main class="team-container">
+
+    <!-- ── FOUNDER ── -->
+    <div class="founder-feature">
+        <div class="founder-photo-wrap">
+            <img
+                src="/images/uploads/founder.jpg"
+                alt="Elijah — Founder of Seventh Day Studios"
+                class="team-photo"
+            >
+            <span class="member-badge">Founder</span>
+        </div>
+
+        <div class="founder-info">
+            <h2 class="founder-name">Elijah</h2>
+            <p class="founder-role">Founder &amp; Developer</p>
+
+            <p class="founder-bio-text">
+                I'm Elijah, a 17-year-old self-taught developer from Colorado and the founder of
+                Seventh Day Studios. I started this studio because I saw a gap in the gaming world —
+                there weren't enough high-quality games that reflected the faith and values I grew up
+                with. So instead of waiting for someone else to make them, I decided to build them myself.
+            </p>
+            <p class="founder-bio-text">
+                My faith drives everything I do. It's the reason this studio exists and the foundation
+                behind every game we create. I'm currently balancing finishing high school and working
+                full time while pouring everything I've got into building something meaningful — games
+                that glorify God and prove that faith and quality belong in the same sentence.
+            </p>
+            <p class="founder-bio-text">
+                This isn't just a hobby or a side project. This is the dream, and I'm building it
+                one line of code at a time.
+            </p>
+        </div>
+    </div>
+
+    <!-- ── TEAM GRID ── -->
+    <div class="team-section-label">
+        <p class="section-label">The Studio</p>
+        <h2 class="section-title">Our Team</h2>
+    </div>
+
+    <div class="team-grid">
+
+        <!-- RJ Knights -->
+        <div class="team-card">
+            <div class="team-card-left">
+                <div class="team-photo-placeholder">⚙️</div>
+                <span class="member-badge" style="justify-content: center; display: flex; margin-top: 0.75rem;">Staff</span>
+            </div>
+            <div class="team-card-right">
+                <h3 class="card-member-name">RJ Knights</h3>
+                <p class="card-member-role">Director of Operations</p>
+                <div class="card-divider" style="margin: 0 0 1.25rem;"></div>
+                <p class="card-bio">
+                    As Director of Operations here at Seventh Day Studios, I stand before this team with one mission, to serve God and help build something truly great. I didn't stumble into this role by accident. My passion for game development and my faith have always walked the same path, and this studio is where those two things finally meet. With game programming on my horizon, I'm bringing every skill, every ounce of dedication, and every blessing to this team. We are not just making games. We are making a statement. And I am honored to be a part of it.
+                </p>
+                <div class="responsibilities">
+                    <p class="responsibilities-title">Responsibilities</p>
+                    <div class="responsibility-group">
+                        <p class="responsibility-group-label">Team &amp; Staff</p>
+                        <ul class="responsibility-list">
+                            <li>Supervising and supporting all staff members</li>
+                            <li>Managing internal coordination and team communication</li>
+                            <li>Ensuring the studio operates smoothly and efficiently day-to-day</li>
+                        </ul>
+                    </div>
+                    <div class="responsibility-group">
+                        <p class="responsibility-group-label">Community &amp; Events</p>
+                        <ul class="responsibility-list">
+                            <li>Planning and hosting community events</li>
+                            <li>Managing giveaways and community engagement initiatives</li>
+                            <li>Maintaining a positive and active server environment</li>
+                        </ul>
+                    </div>
+                    <div class="responsibility-group">
+                        <p class="responsibility-group-label">Social Media</p>
+                        <ul class="responsibility-list">
+                            <li>Leading all Seventh Day Studios social media channels and the team behind them</li>
+                            <li>Coordinating content, announcements, and outreach across platforms</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skills">
+                    <p class="skills-title">Skills</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Roblox Studio</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Artificial Intelligence</span>
+                        <span class="skill-tag">3D Graphics</span>
+                        <span class="skill-tag">Game Programming</span>
+                    </div>
+                </div>
+                <div class="skills" style="margin-top: 1rem; border-top: none; padding-top: 0;">
+                    <p class="skills-title">Education</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">📍 George Brown College — Ontario College Advanced Diploma, Game Programming (In Progress)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alex O. -->
+        <div class="team-card">
+            <div class="team-card-left">
+                <div class="team-photo-placeholder">✍️</div>
+                <span class="member-badge" style="justify-content: center; display: flex; margin-top: 0.75rem;">Developer</span>
+            </div>
+            <div class="team-card-right">
+                <h3 class="card-member-name">Alex O.</h3>
+                <p class="card-member-role">Developer — Narrative Designer</p>
+                <div class="card-divider" style="margin: 0 0 1.25rem;"></div>
+                <p class="card-bio">
+                    Hello, my name is Alex. I am a Narrative Designer with years of experience creating and writing worlds for a variety of projects. I want to write stories that make people have a hard time forgetting them. I focus on themes and writing something for people to take home after they experience it. I want players to feel more spiritual and develop stories that bring them into a closer relationship with Jesus through these experiences.
+                </p>
+                <div class="responsibilities">
+                    <p class="responsibilities-title">Responsibilities</p>
+                    <div class="responsibility-group">
+                        <p class="responsibility-group-label">Narrative Design</p>
+                        <ul class="responsibility-list">
+                            <li>Writing story scripts and dialogue for all in-game characters and events</li>
+                            <li>Building and maintaining the world, lore, and narrative history</li>
+                            <li>Designing character backstories, motivations, and arcs</li>
+                            <li>Producing and maintaining narrative documentation and story bibles</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skills">
+                    <p class="skills-title">Skills</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Roblox Studio</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">Scriptwriting</span>
+                        <span class="skill-tag">Worldbuilding</span>
+                        <span class="skill-tag">Character Development</span>
+                        <span class="skill-tag">Dialogue Writing</span>
+                        <span class="skill-tag">Google Docs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- John Doyle -->
+        <div class="team-card">
+            <div class="team-card-left">
+                <div class="team-photo-placeholder">💻</div>
+                <span class="member-badge" style="justify-content: center; display: flex; margin-top: 0.75rem;">Developer</span>
+            </div>
+            <div class="team-card-right">
+                <h3 class="card-member-name">John Doyle</h3>
+                <p class="card-member-role">Developer — Scripter</p>
+                <div class="card-divider" style="margin: 0 0 1.25rem;"></div>
+                <p class="card-bio">
+                    Video games are things that I have been fascinated with for a long time, and I want to make some. I joined Seventh Day Studios because I wanted to be part of a team and get a feel for the team experience. I hope to make games that will not go against what God says in the Bible, and I'm happy to have found a group that I can work with that does just that.
+                </p>
+                <div class="responsibilities">
+                    <p class="responsibilities-title">Responsibilities</p>
+                    <div class="responsibility-group">
+                        <p class="responsibility-group-label">Scripting &amp; Development</p>
+                        <ul class="responsibility-list">
+                            <li>Writing and maintaining game scripts across all project systems</li>
+                            <li>Implementing gameplay mechanics, interactions, and game logic</li>
+                            <li>Supporting debugging efforts and assisting with QA testing</li>
+                            <li>Documenting code, systems, and technical processes for the team</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skills">
+                    <p class="skills-title">Skills</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Roblox Studio</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">Lua</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Game Logic</span>
+                        <span class="skill-tag">Debugging</span>
+                        <span class="skill-tag">Version Control</span>
+                        <span class="skill-tag">3D Graphics</span>
+                        <span class="skill-tag">OpenGL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scorse -->
+        <div class="team-card">
+            <div class="team-card-left">
+                <div class="team-photo-placeholder">🎨</div>
+                <span class="member-badge" style="justify-content: center; display: flex; margin-top: 0.75rem;">Developer</span>
+            </div>
+            <div class="team-card-right">
+                <h3 class="card-member-name">Scorse</h3>
+                <p class="card-member-role">Developer — Modeler | Scripter | UI/UX</p>
+                <div class="card-divider" style="margin: 0 0 1.25rem;"></div>
+                <p class="card-bio">
+                    My name is Scorse, and I am a 3D modeler first and foremost. Creating the worlds, characters, and environments that players step into is what drives me. I believe that great visuals are not just decoration — they are storytelling, and every model I build is an opportunity to communicate something meaningful. Being part of Seventh Day Studios means my craft is being used for something greater than entertainment. It is being used to glorify God, and that changes everything about how I approach my work. I am here to build something beautiful, and I am honored to do it alongside this team.
+                </p>
+                <div class="responsibilities">
+                    <p class="responsibilities-title">Responsibilities</p>
+                    <div class="responsibility-group">
+                        <p class="responsibility-group-label">3D Modeling</p>
+                        <ul class="responsibility-list">
+                            <li>Creating characters, environments, props, and assets for all projects</li>
+                            <li>Ensuring visual consistency and quality across all modeled assets</li>
+                            <li>Rigging and preparing models for use in-engine</li>
+                        </ul>
+                    </div>
+                    <div class="responsibility-group">
+                        <p class="responsibility-group-label">Scripting &amp; UI/UX</p>
+                        <ul class="responsibility-list">
+                            <li>Supporting scripting needs across game systems</li>
+                            <li>Designing and implementing user interface layouts and experiences</li>
+                            <li>Collaborating with developers to ensure UI integrates cleanly with gameplay</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skills">
+                    <p class="skills-title">Skills</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Roblox Studio</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">Blender</span>
+                        <span class="skill-tag">Lua</span>
+                        <span class="skill-tag">Rigging</span>
+                        <span class="skill-tag">Texturing</span>
+                        <span class="skill-tag">UV Mapping</span>
+                        <span class="skill-tag">UI Design</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ── HIRING SECTION ── -->
+    <section class="hiring-section">
+        <div class="hiring-header">
+            <p class="section-label">We're Growing</p>
+            <h2 class="section-title">Want to Join the Team?</h2>
+            <p class="hiring-desc">
+                Seventh Day Studios is actively looking for passionate, faith-driven individuals to help build something that matters. Whether you make games, create art, write stories, or build community — there is a place for you here.
+            </p>
+        </div>
+
+        <div class="roles-grid">
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">🎮</div>
+                    <p class="role-card-title">Game Developer</p>
+                </div>
+                <p class="role-card-desc">Build the games that carry our mission. Work directly on our titles — from core mechanics to systems design — helping bring faith-driven stories to life through code.</p>
+                <span class="role-card-category">Development</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">🎨</div>
+                    <p class="role-card-title">Artist / Designer</p>
+                </div>
+                <p class="role-card-desc">Shape the visual identity of our games. Create concept art, UI, environments, and characters that define the look and feel of everything we build.</p>
+                <span class="role-card-category">Development</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">🎵</div>
+                    <p class="role-card-title">Music / Audio</p>
+                </div>
+                <p class="role-card-desc">Set the tone for our worlds. Compose soundtracks, design sound effects, or provide voice work that immerses players in our game experiences.</p>
+                <span class="role-card-category">Development</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">✍️</div>
+                    <p class="role-card-title">Writer / Narrative</p>
+                </div>
+                <p class="role-card-desc">Craft the stories that move players. Shape dialogue, lore, and world-building for games that weave faith themes naturally into compelling experiences.</p>
+                <span class="role-card-category">Development</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">📣</div>
+                    <p class="role-card-title">Social Media Manager</p>
+                </div>
+                <p class="role-card-desc">Be the voice of Seventh Day Studios online. Manage our social presence, create content, and grow our audience authentically across platforms.</p>
+                <span class="role-card-category">Community</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">🎬</div>
+                    <p class="role-card-title">Movie Night Host</p>
+                </div>
+                <p class="role-card-desc">Host weekly movie nights in our Discord server, selecting faith-friendly films and leading discussions that bring the community together.</p>
+                <span class="role-card-category">Community</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">🕹️</div>
+                    <p class="role-card-title">Game Night Host</p>
+                </div>
+                <p class="role-card-desc">Plan and host community game nights in our Discord. Organize multiplayer events, tournaments, and activities that keep our community energized.</p>
+                <span class="role-card-category">Community</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">🛡️</div>
+                    <p class="role-card-title">Discord Moderator</p>
+                </div>
+                <p class="role-card-desc">Keep the Seventh Day Studios Discord safe, welcoming, and on-mission. Enforce our rules, support members, and maintain an environment where faith and gaming go hand in hand.</p>
+                <span class="role-card-category">Community</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">🌟</div>
+                    <p class="role-card-title">Community Engagement</p>
+                </div>
+                <p class="role-card-desc">Be the heartbeat of our community. Spark conversations, welcome new members, run engagement activities, and make the server feel alive every day.</p>
+                <span class="role-card-category">Community</span>
+            </div>
+
+            <div class="role-card-item">
+                <div class="role-card-top">
+                    <div class="role-card-emoji">📖</div>
+                    <p class="role-card-title">Bible Study Leader</p>
+                </div>
+                <p class="role-card-desc">Lead our community deeper into the Word. Plan and host regular Bible study sessions that connect scripture to gaming, creativity, and everyday life.</p>
+                <span class="role-card-category">Faith</span>
+            </div>
+
+        </div>
+
+        <div class="hiring-cta">
+            <h3>Ready to Build Something That Matters?</h3>
+            <p>Every role at Seventh Day Studios is an opportunity to use your gifts for something greater. We are a volunteer-based indie studio on a mission, and we want people who believe in it.</p>
+            <a href="/apply/" class="btn btn-primary">
+                <span>Apply Now</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+</main>
