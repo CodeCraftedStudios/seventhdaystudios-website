@@ -1,652 +1,414 @@
----
-layout: base.njk
-title: Faith-Driven Game Development
-extraStyles: |
-    /* Hero Banner Section */
-    .hero-banner {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        min-height: 600px;
-        max-height: 1000px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Under Maintenance — Seventh Day Studios</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .banner-media {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-dim: #7A6230;
+      --navy: #0A0D14;
+      --navy-mid: #0F1420;
+      --navy-surface: #141925;
+      --indigo: #1E2740;
+      --text-primary: #F0EBE0;
+      --text-muted: #9A9080;
+      --text-dim: #6A6055;
     }
 
-    .banner-video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
     }
 
-    .banner-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            180deg,
-            rgba(26, 15, 46, 0.3) 0%,
-            rgba(26, 15, 46, 0.5) 50%,
-            rgba(26, 15, 46, 0.95) 100%
-        );
-        z-index: 2;
+    body {
+      background-color: var(--navy);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
     }
 
-    .hero-content {
-        position: relative;
-        z-index: 3;
-        text-align: center;
-        padding: 0 2rem;
-        max-width: 900px;
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
     }
 
-    .hero-subtitle {
-        font-size: 0.9rem;
-        font-weight: 500;
-        letter-spacing: 0.4em;
-        text-transform: uppercase;
-        color: var(--divine-gold);
-        margin-bottom: 1rem;
-        opacity: 0;
-        animation: fadeSlideUp 0.8s ease 0.3s forwards;
+    /* Radial vignette */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(5, 7, 12, 0.85) 100%);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .hero-title {
-        font-family: 'Cinzel', serif;
-        font-size: clamp(2.5rem, 8vw, 5rem);
-        font-weight: 700;
-        color: var(--pale-gold);
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        animation: fadeSlideUp 0.8s ease 0.5s forwards;
+    /* Subtle gold horizon glow */
+    .bg-glow {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: var(--gold);
+      box-shadow:
+        0 0 80px 40px rgba(201, 168, 76, 0.06),
+        0 0 200px 100px rgba(201, 168, 76, 0.03);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .hero-title .highlight {
-        color: var(--divine-gold);
-        position: relative;
-        display: inline-block;
+    /* Stars canvas */
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
     }
 
-    .hero-title .highlight::after {
-        content: '';
-        position: absolute;
-        bottom: 0.1em;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(90deg, transparent, var(--divine-gold), transparent);
-        animation: shimmer 3s ease-in-out infinite;
+    /* Main content */
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      max-width: 720px;
+      width: 100%;
+      animation: fadeIn 1.6s ease both;
     }
 
-    @keyframes shimmer {
-        0%, 100% { opacity: 0.5; transform: scaleX(0.8); }
-        50% { opacity: 1; transform: scaleX(1); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-description {
-        font-size: 1.25rem;
-        color: var(--text-muted);
-        max-width: 600px;
-        margin: 0 auto 2.5rem;
-        opacity: 0;
-        animation: fadeSlideUp 0.8s ease 0.7s forwards;
+    /* Logo / Studio name */
+    .studio-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+      font-weight: 600;
+      letter-spacing: 0.45em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      opacity: 0.85;
+      animation: fadeIn 1.6s 0.2s ease both;
     }
 
-    .hero-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        opacity: 0;
-        animation: fadeSlideUp 0.8s ease 0.9s forwards;
+    /* Ornamental rule */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.6s 0.3s ease both;
     }
 
-    @keyframes fadeSlideUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .ornament-line {
+      height: 1px;
+      width: 60px;
+      background: linear-gradient(to right, transparent, var(--gold-dim));
     }
 
-    .scroll-indicator {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 3;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--text-muted);
-        font-size: 0.75rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        opacity: 0;
-        animation: fadeSlideUp 0.8s ease 1.2s forwards;
+    .ornament-line.right {
+      background: linear-gradient(to left, transparent, var(--gold-dim));
     }
 
-    .scroll-indicator::after {
-        content: '';
-        width: 1px;
-        height: 40px;
-        background: linear-gradient(180deg, var(--divine-gold), transparent);
-        animation: scroll-bounce 2s ease-in-out infinite;
+    .ornament-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.7;
     }
 
-    @keyframes scroll-bounce {
-        0%, 100% { transform: scaleY(1); opacity: 1; }
-        50% { transform: scaleY(0.5); opacity: 0.5; }
+    /* Headline */
+    .headline {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+      animation: fadeIn 1.6s 0.4s ease both;
     }
 
-    /* ── Announcements Section ── */
-    .announcements-section {
-        position: relative;
-        z-index: 1;
-        padding: 5rem 2rem 0;
+    .headline span {
+      color: var(--gold-light);
     }
 
-    .announcements-inner {
-        max-width: 1200px;
-        margin: 0 auto;
+    /* Subheading */
+    .subheading {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+      animation: fadeIn 1.6s 0.55s ease both;
     }
 
-    .announcements-section .section-header {
-        text-align: center;
-        margin-bottom: 2.5rem;
+    /* Gold rule divider */
+    .divider {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      margin: 0 auto 3rem;
+      animation: fadeIn 1.6s 0.65s ease both;
     }
 
-    .announcements-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        gap: 1.5rem;
+    /* Countdown */
+    .countdown {
+      display: flex;
+      gap: clamp(1rem, 4vw, 2.5rem);
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      animation: fadeIn 1.6s 0.75s ease both;
     }
 
-    /* First card spans full width */
-    .announcement-card:first-child {
-        grid-column: 1 / -1;
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
     }
 
-    .announcement-card {
-        background: linear-gradient(135deg, rgba(74, 44, 122, 0.3), rgba(45, 27, 78, 0.5));
-        border: 1px solid rgba(212, 168, 75, 0.12);
-        border-radius: 14px;
-        padding: 2rem 2rem 1.75rem;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: all 0.4s ease;
+    .countdown-value {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1;
+      min-width: 2ch;
+      letter-spacing: -0.02em;
     }
 
-    .announcement-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, transparent, var(--divine-gold), transparent);
-        opacity: 0;
-        transition: opacity 0.4s ease;
+    .countdown-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
     }
 
-    .announcement-card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(212, 168, 75, 0.28);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    .countdown-sep {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--gold-dim);
+      margin-top: 0.15em;
+      line-height: 1;
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
     }
 
-    .announcement-card:hover::before {
-        opacity: 1;
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50%       { opacity: 0.15; }
     }
 
-    /* Featured card (first) gets a subtle glow */
-    .announcement-card.is-featured {
-        background: linear-gradient(135deg, rgba(84, 54, 132, 0.4), rgba(45, 27, 78, 0.6));
-        border-color: rgba(212, 168, 75, 0.2);
+    /* Target date label */
+    .target-date {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      animation: fadeIn 1.6s 0.85s ease both;
     }
 
-    .announcement-card.is-featured::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 14px;
-        background: radial-gradient(ellipse at top left, rgba(212, 168, 75, 0.06), transparent 60%);
-        pointer-events: none;
+    /* Bottom ornament */
+    .bottom-ornament {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+      animation: fadeIn 1.6s 0.95s ease both;
     }
 
-    .card-top {
-        display: flex;
-        align-items: flex-start;
-        gap: 1.25rem;
-        margin-bottom: 1.25rem;
+    .bottom-ornament-line {
+      height: 1px;
+      width: 40px;
+      background: linear-gradient(to right, transparent, var(--gold-dim));
+      opacity: 0.5;
     }
 
-    .card-icon {
-        flex-shrink: 0;
-        width: 52px;
-        height: 52px;
-        background: linear-gradient(135deg, var(--mystic-purple), var(--royal-purple));
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
+    .bottom-ornament-line.right {
+      background: linear-gradient(to left, transparent, var(--gold-dim));
     }
 
-    .announcement-card.is-featured .card-icon {
-        width: 58px;
-        height: 58px;
-        font-size: 1.6rem;
+    .bottom-tagline {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(0.6rem, 1.4vw, 0.7rem);
+      letter-spacing: 0.35em;
+      color: var(--text-dim);
+      text-transform: uppercase;
     }
+  </style>
+</head>
+<body>
 
-    .card-meta {
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-        padding-top: 0.1rem;
-    }
+  <div class="bg-glow"></div>
+  <canvas id="stars"></canvas>
 
-    .card-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--divine-gold);
-        opacity: 0.85;
-    }
+  <div class="container">
+    <p class="studio-name">Seventh Day Studios</p>
 
-    .card-tag::before {
-        content: '';
-        display: inline-block;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--divine-gold);
-        opacity: 0.7;
-    }
-
-    .card-title {
-        font-family: 'Cinzel', serif;
-        font-size: 1.15rem;
-        font-weight: 600;
-        color: var(--pale-gold);
-        line-height: 1.3;
-    }
-
-    .announcement-card.is-featured .card-title {
-        font-size: 1.3rem;
-    }
-
-    .card-body {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-        line-height: 1.75;
-        flex: 1;
-        margin-bottom: 1.5rem;
-    }
-
-    .announcement-card.is-featured .card-body {
-        font-size: 1rem;
-    }
-
-    .card-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-top: 1.25rem;
-        border-top: 1px solid rgba(212, 168, 75, 0.08);
-    }
-
-    .card-divider-line {
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, rgba(212, 168, 75, 0.15), transparent);
-        margin-right: 1.25rem;
-    }
-
-    .card-btn {
-        flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--divine-gold);
-        text-decoration: none;
-        letter-spacing: 0.04em;
-        transition: gap 0.25s ease, opacity 0.25s ease;
-        opacity: 0.85;
-    }
-
-    .card-btn:hover {
-        gap: 0.75rem;
-        opacity: 1;
-    }
-
-    .card-btn svg {
-        transition: transform 0.25s ease;
-    }
-
-    .card-btn:hover svg {
-        transform: translateX(3px);
-    }
-
-    /* Featured Section */
-    .section {
-        position: relative;
-        z-index: 1;
-        padding: 6rem 2rem;
-    }
-
-    .section-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .section-header {
-        text-align: center;
-        margin-bottom: 4rem;
-    }
-
-    .section-label {
-        font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        color: var(--divine-gold);
-        margin-bottom: 1rem;
-    }
-
-    .section-title {
-        font-family: 'Cinzel', serif;
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 700;
-        color: var(--pale-gold);
-    }
-
-    .featured-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-    }
-
-    .featured-card {
-        background: linear-gradient(135deg, rgba(74, 44, 122, 0.3), rgba(45, 27, 78, 0.5));
-        border: 1px solid rgba(212, 168, 75, 0.1);
-        border-radius: 12px;
-        padding: 2rem;
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .featured-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, transparent, var(--divine-gold), transparent);
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
-
-    .featured-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(212, 168, 75, 0.3);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .featured-card:hover::before {
-        opacity: 1;
-    }
-
-    .card-description {
-        color: var(--text-muted);
-        font-size: 1rem;
-        line-height: 1.7;
-    }
-
-    @media (max-width: 768px) {
-        .announcements-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .announcement-card:first-child {
-            grid-column: auto;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .hero-subtitle {
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-        }
-
-        .hero-description {
-            font-size: 1rem;
-        }
-
-        .hero-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .btn {
-            width: 100%;
-            max-width: 280px;
-            justify-content: center;
-        }
-
-        .announcements-section {
-            padding: 3.5rem 1rem 0;
-        }
-
-        .section {
-            padding: 4rem 1rem;
-        }
-
-        .featured-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .card-title {
-            font-size: 1rem;
-        }
-
-        .announcement-card.is-featured .card-title {
-            font-size: 1.1rem;
-        }
-    }
----
-
-<!-- Hero Banner Section -->
-<section class="hero-banner">
-    <div class="banner-media">
-        <video class="banner-video" autoplay loop muted playsinline>
-            <source src="/banner.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="banner-overlay"></div>
-    
-    <div class="hero-content">
-        <p class="hero-subtitle">Faith-Driven Game Development</p>
-        <h1 class="hero-title">
-            <span class="highlight">Seventh Day</span> Studios
-        </h1>
-        <p class="hero-description">
-            Creating immersive gaming experiences that inspire, entertain, and uplift. 
-            Where creativity meets purpose.
-        </p>
-        <div class="hero-buttons">
-            <a href="/games/" class="btn btn-primary">
-                <span>Explore Games</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-            <a href="/about/" class="btn btn-secondary">Our Story</a>
-        </div>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line right"></div>
     </div>
 
-    <div class="scroll-indicator">
-        <span>Scroll</span>
+    <h1 class="headline">Something Greater<br>Is <span>Being Built</span></h1>
+
+    <p class="subheading">
+      Our site is currently undergoing maintenance.<br>
+      We will return soon — stronger, and ready.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit">
+        <span class="countdown-value" id="days">00</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-value" id="hours">00</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-value" id="minutes">00</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-value" id="seconds">00</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
     </div>
-</section>
 
-<!-- Announcements Section -->
-<section class="announcements-section">
-    <div class="announcements-inner">
-        <div class="section-header">
-            <p class="section-label">Latest From The Studio</p>
-            <h2 class="section-title">What's New</h2>
-        </div>
+    <p class="target-date">Returning June 1, 2025</p>
 
-        <div class="announcements-grid">
-
-            <!-- ANNOUNCEMENT 1 — Featured (full width) -->
-            <div class="announcement-card is-featured">
-                <div class="card-top">
-                    <div class="card-icon">🛍️</div>
-                    <div class="card-meta">
-                        <span class="card-tag">Shop</span>
-                        <!-- EDIT TITLE -->
-                        <h3 class="card-title">The Studio Shop Is Now Open</h3>
-                    </div>
-                </div>
-                <!-- EDIT BODY -->
-                <p class="card-body">
-                    Today marks a significant milestone for Seventh Day Studios — our server shop is officially live. Members of our Discord community can now purchase exclusive roles, subscribe to monthly supporter tiers, and secure a permanent spot on the Seventh Day Studios website through the Studio Wall package. Every purchase made in the shop goes directly toward building the studio and the games we are creating. If you have ever wanted to support what we are building here, now is the time.
-                </p>
-                <div class="card-footer">
-                    <div class="card-divider-line"></div>
-                    <!-- EDIT LINK + LABEL -->
-                    <a href="https://discord.gg/CmZwk5nBcS" class="card-btn" target="_blank" rel="noopener">
-                        Visit the Shop
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- ANNOUNCEMENT 2 -->
-            <div class="announcement-card">
-                <div class="card-top">
-                    <div class="card-icon">📋</div>
-                    <div class="card-meta">
-                        <span class="card-tag">Hiring</span>
-                        <!-- EDIT TITLE -->
-                        <h3 class="card-title">We Are Hiring — Join the Seventh Day Studios Team</h3>
-                    </div>
-                </div>
-                <!-- EDIT BODY -->
-                <p class="card-body">
-                    Seventh Day Studios is actively growing its team. We are currently seeking Quality Assurance Testers with a sharp eye for detail, as well as Event Hosters who are organized, energetic, and love bringing communities together. If you are passionate about games and want to be part of something being built from the ground up, we want to hear from you.
-                </p>
-                <div class="card-footer">
-                    <div class="card-divider-line"></div>
-                    <!-- EDIT LINK + LABEL -->
-                    <a href="https://seventhdaystudios.com/apply" class="card-btn">
-                        Apply Now
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- ANNOUNCEMENT 3 -->
-            <div class="announcement-card">
-                <div class="card-top">
-                    <div class="card-icon">🔒</div>
-                    <div class="card-meta">
-                        <span class="card-tag">Coming Soon</span>
-                        <!-- EDIT TITLE -->
-                        <h3 class="card-title">Something Is Being Built</h3>
-                    </div>
-                </div>
-                <!-- EDIT BODY -->
-                <p class="card-body">
-                    We have been heads down working on something and we are almost ready to share it with the world. Seventh Day Studios has a game announcement coming within the next day or two — and we think it is going to set the tone for everything this studio is about. Make sure you are in our Discord and have your notification roles set.
-                </p>
-                <div class="card-footer">
-                    <div class="card-divider-line"></div>
-                    <!-- EDIT LINK + LABEL -->
-                    <a href="https://discord.gg/CmZwk5nBcS" class="card-btn" target="_blank" rel="noopener">
-                        Stay in the Loop
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-        </div>
+    <div class="bottom-ornament">
+      <div class="bottom-ornament-line"></div>
+      <span class="bottom-tagline">Quality Over Compromise</span>
+      <div class="bottom-ornament-line right"></div>
     </div>
-</section>
+  </div>
 
-<!-- Featured Section -->
-<section class="section">
-    <div class="section-inner">
-        <div class="section-header">
-            <p class="section-label">What We Do</p>
-            <h2 class="section-title">Crafting Meaningful Experiences</h2>
-        </div>
+  <script>
+    /* ── Countdown ── */
+    const target = new Date('2026-06-01T00:00:00');
 
-        <div class="featured-grid">
-            <div class="featured-card">
-                <div class="card-icon">🎮</div>
-                <h3 class="card-title">RPG Adventures</h3>
-                <p class="card-description">
-                    Immersive roleplay games with rich storytelling, meaningful choices, 
-                    and adventures that leave a lasting impact.
-                </p>
-            </div>
+    function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
 
-            <div class="featured-card">
-                <div class="card-icon">✝️</div>
-                <h3 class="card-title">Faith-Inspired</h3>
-                <p class="card-description">
-                    Games built on a foundation of faith, weaving spiritual themes 
-                    naturally into engaging gameplay experiences.
-                </p>
-            </div>
+    function tick() {
+      const now  = new Date();
+      const diff = target - now;
 
-            <div class="featured-card">
-                <div class="card-icon">🤝</div>
-                <h3 class="card-title">Community Driven</h3>
-                <p class="card-description">
-                    Join our growing community of gamers and creators who share 
-                    a passion for meaningful entertainment.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+      if (diff <= 0) {
+        document.getElementById('days').textContent    = '00';
+        document.getElementById('hours').textContent   = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      const d  = Math.floor(diff / 864e5);
+      const h  = Math.floor((diff % 864e5) / 36e5);
+      const m  = Math.floor((diff % 36e5)  / 6e4);
+      const s  = Math.floor((diff % 6e4)   / 1e3);
+
+      document.getElementById('days').textContent    = pad(d);
+      document.getElementById('hours').textContent   = pad(h);
+      document.getElementById('minutes').textContent = pad(m);
+      document.getElementById('seconds').textContent = pad(s);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    /* ── Stars ── */
+    (function () {
+      const canvas = document.getElementById('stars');
+      const ctx    = canvas.getContext('2d');
+      let stars    = [];
+      let W, H;
+
+      function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        buildStars();
+      }
+
+      function buildStars() {
+        stars = [];
+        const count = Math.floor((W * H) / 6000);
+        for (let i = 0; i < count; i++) {
+          stars.push({
+            x:    Math.random() * W,
+            y:    Math.random() * H,
+            r:    Math.random() * 0.8 + 0.2,
+            a:    Math.random(),
+            speed: Math.random() * 0.004 + 0.001,
+            phase: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      function draw(t) {
+        ctx.clearRect(0, 0, W, H);
+        stars.forEach(s => {
+          const alpha = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(240, 235, 224, ${alpha * s.a})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      requestAnimationFrame(draw);
+    })();
+  </script>
+
+</body>
+</html>
